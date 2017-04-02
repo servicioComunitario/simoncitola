@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAlumnosTable extends Migration
+class CreateRepresentantesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,25 +13,23 @@ class CreateAlumnosTable extends Migration
      */
     public function up()
     {
-
-        Schema::create('alumnos', function (Blueprint $table) {
+        Schema::create('representantes', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('estado_id')->unsigned();
+            $table->integer('id_parentesco')->unsigned();
             $table->text('nombre');
-            $table->text('nombre2')->nullable();
+            $table->text('nombre2');
             $table->text('apellido');
-            $table->text('apellido2')->nullable();
+            $table->text('apellido2');
             $table->string('cedula', 15)->unique();
-            $table->text('lugar_nacimiento');
             $table->date('fecha_nacimiento');
-            $table->text('direccion');
+            $table->text('ocupacion');
+            $table->text('direccion_trabajo');
+            $table->text('telefono');
+            $table->text('telefono2');
+
             $table->timestamps();
 
-            $table->foreign('estado_id')
-                ->references('id')
-                ->on('estados')
-                ->onUpdate('cascade')
-                ->onDelete('restrict');
+            $table->foreign('id_parentesco')->references('id')->on('parentescos');            
         });
     }
 
@@ -42,6 +40,6 @@ class CreateAlumnosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('alumnos');
+        Schema::dropIfExists('representantes');
     }
 }
