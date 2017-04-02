@@ -308,3 +308,4 @@
     <script src={{ URL::asset('js/custom.min.js') }}></script>
   </body>
 </html>
+
