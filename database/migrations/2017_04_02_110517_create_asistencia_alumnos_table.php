@@ -15,7 +15,24 @@ class CreateAsistenciaAlumnosTable extends Migration
     {
         Schema::create('asistencia_alumnos', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('alumno_id')->unsigned();
+            $table->date('dia_laborable_id');
+            $table->boolean('presente');
+
             $table->timestamps();
+
+            $table->foreign('dia_laborable_id')
+                ->references('id')
+                ->on('dias_laborables')
+                ->onUpdate('cascade')
+                ->onDelete('restrict');
+
+            $table->foreign('alumno_id')
+                ->references('id')
+                ->on('alumnos')
+                ->onUpdate('cascade')
+                ->onDelete('restrict');
+
         });
     }
 

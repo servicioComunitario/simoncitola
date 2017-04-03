@@ -15,7 +15,22 @@ class CreateUsuariosTable extends Migration
     {
         Schema::create('usuarios', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('email')->unique();
+            $table->string('password');
+            $table->integer('rol_id')->index();
+            $table->integer('empleado_id')->index();
+            $table->rememberToken();
             $table->timestamps();
+
+            $table->foreign('rol_id')
+                ->references('id')->on('roles')
+                ->onUpdate('cascade')
+                ->onDelete('restrict');
+
+            $table->foreign('empleado_id')
+                ->references('id')->on('empleados')
+                ->onUpdate('cascade')
+                ->onDelete('restrict');
         });
     }
 
@@ -26,6 +41,6 @@ class CreateUsuariosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('usuarios');
+        Schema::dropIfExists('users');
     }
 }

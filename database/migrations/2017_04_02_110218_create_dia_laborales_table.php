@@ -14,8 +14,16 @@ class CreateDiaLaboralesTable extends Migration
     public function up()
     {
         Schema::create('dia_laborales', function (Blueprint $table) {
-            $table->increments('id');
+            $table->date('id')->unique();
+            $table->integer('periodo_id')->unsigned();
+            $table->boolean('academico');
             $table->timestamps();
+            
+            $table->foreign('periodo_id')
+                ->references('id')
+                ->on('periodos')
+                ->onUpdate('cascade')
+                ->onDelete('restrict');
         });
     }
 

@@ -15,7 +15,58 @@ class CreateInscripcionesTable extends Migration
     {
         Schema::create('inscripciones', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('alumno_id')->unsigned();
+            $table->integer('seccion_id')->unsigned();
+            $table->integer('representante_padre_id')->unsigned()->nullable();
+            $table->integer('representante_madre_id')->unsigned()->nullable();
+            $table->integer('responsable_id')->unsigned();
+            $table->boolean('partida_nacimiento');
+            $table->boolean('certificado_vacuna');
+            $table->boolean('foto');
+            $table->boolean('copia_cedula_madre');
+            $table->boolean('constancia_trabajo');
+            $table->boolean('carta_residencia');
+            $table->boolean('otros_ninios_inscritos');
+            $table->boolean('colabora');
+            $table->date('dia_laborable_id');
+
             $table->timestamps();
+
+            $table->foreign('alumno_id')
+                ->references('id')
+                ->on('alumnos')
+                ->onUpdate('cascade')
+                ->onDelete('restrict');
+
+            $table->foreign('representante_padre_id')
+                ->references('id')
+                ->on('representantes')
+                ->onUpdate('cascade')
+                ->onDelete('restrict');
+
+            $table->foreign('representante_madre_id')
+                ->references('id')
+                ->on('representantes')
+                ->onUpdate('cascade')
+                ->onDelete('restrict');
+
+            $table->foreign('responsable_id')
+                ->references('id')
+                ->on('representantes')
+                ->onUpdate('cascade')
+                ->onDelete('restrict');
+
+            $table->foreign('seccion_id')
+                ->references('id')
+                ->on('secciones')
+                ->onUpdate('cascade')
+                ->onDelete('restrict');
+
+            $table->foreign('dia_laborable_id')
+                ->references('id')
+                ->on('dias_laborables')
+                ->onUpdate('cascade')
+                ->onDelete('restrict');
         });
     }
 

@@ -15,7 +15,25 @@ class CreateRepresentantesTable extends Migration
     {
         Schema::create('representantes', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('parentesco_id')->unsigned();
+            $table->text('nombre');
+            $table->text('nombre2')->nullable();
+            $table->text('apellido');
+            $table->text('apellido2')->nullable();
+            $table->string('cedula', 15)->unique();
+            $table->date('fecha_nacimiento');
+            $table->text('ocupacion');
+            $table->text('direccion_trabajo')->nullable();
+            $table->text('telefono');
+            $table->text('telefono2')->nullable();
+
             $table->timestamps();
+
+            $table->foreign('parentesco_id')
+                ->references('id')
+                ->on('parentescos')
+                ->onUpdate('cascade')
+                ->onDelete('restrict');
         });
     }
 

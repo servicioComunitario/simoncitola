@@ -15,7 +15,16 @@ class CreateAsistenciaDiariaAlumnosTable extends Migration
     {
         Schema::create('asistencia_diaria_alumnos', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('guardia_id')->unsigned();
+            $table->text('observacion')->nullable();
+
             $table->timestamps();
+
+            $table->foreign('guardia_id')
+                ->references('id')
+                ->on('guardias')
+                ->onUpdate('cascade')
+                ->onDelete('restrict');
         });
     }
 

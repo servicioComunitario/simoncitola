@@ -15,7 +15,30 @@ class CreateAplazadosTable extends Migration
     {
         Schema::create('aplazados', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('inscripcion_id')->unsigned();
+            $table->integer('motivo_id')->unsigned();
+            $table->date('dia_laborable_id');
+            $table->text('motivo');
+
             $table->timestamps();
+
+            $table->foreign('inscripcion_id')
+                ->references('id')
+                ->on('inscripciones')
+                ->onUpdate('cascade')
+                ->onDelete('restrict');
+
+            $table->foreign('motivo_id')
+                ->references('id')
+                ->on('motivos')
+                ->onUpdate('cascade')
+                ->onDelete('restrict');
+
+            $table->foreign('dia_laborable_id')
+                ->references('id')
+                ->on('dia_laborables')
+                ->onUpdate('cascade')
+                ->onDelete('restrict');
         });
     }
 
