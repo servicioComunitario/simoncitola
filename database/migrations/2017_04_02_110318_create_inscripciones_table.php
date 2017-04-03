@@ -30,6 +30,8 @@ class CreateInscripcionesTable extends Migration
             $table->boolean('colabora');
             $table->date('dia_laborable_id');
 
+            $table->index('dia_laborable_id');
+
             $table->timestamps();
 
             $table->foreign('alumno_id')
@@ -64,10 +66,11 @@ class CreateInscripcionesTable extends Migration
 
             $table->foreign('dia_laborable_id')
                 ->references('id')
-                ->on('dias_laborables')
+                ->on('dia_laborables')
                 ->onUpdate('cascade')
                 ->onDelete('restrict');
         });
+       
     }
 
     /**

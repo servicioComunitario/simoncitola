@@ -20,6 +20,8 @@ class CreateAplazadosTable extends Migration
             $table->date('dia_laborable_id');
             $table->text('motivo');
 
+            $table->index('dia_laborable_id');
+
             $table->timestamps();
 
             $table->foreign('inscripcion_id')

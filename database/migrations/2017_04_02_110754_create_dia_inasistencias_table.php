@@ -18,17 +18,19 @@ class CreateDiaInasistenciasTable extends Migration
             $table->date('dia_laborable_id');
             $table->integer('acta_inasistencia_id')->unsigned();
 
+            $table->index('dia_laborable_id');
+
             $table->timestamps();
 
             $table->foreign('dia_laborable_id')
                 ->references('id')
-                ->on('dias_laborables')
+                ->on('dia_laborables')
                 ->onUpdate('cascade')
                 ->onDelete('restrict');
 
             $table->foreign('acta_inasistencia_id')
                 ->references('id')
-                ->on('actas_inasistencias')
+                ->on('acta_inasistencias')
                 ->onUpdate('cascade')
                 ->onDelete('restrict');
 

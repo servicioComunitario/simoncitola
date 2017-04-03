@@ -19,11 +19,13 @@ class CreateAsistenciaAlumnosTable extends Migration
             $table->date('dia_laborable_id');
             $table->boolean('presente');
 
+            $table->index('dia_laborable_id');
+
             $table->timestamps();
 
             $table->foreign('dia_laborable_id')
                 ->references('id')
-                ->on('dias_laborables')
+                ->on('dia_laborables')
                 ->onUpdate('cascade')
                 ->onDelete('restrict');
 

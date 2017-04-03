@@ -22,18 +22,20 @@ class CreateAsistenciaEmpleadosTable extends Migration
             $table->boolean('presente');
             $table->boolean('ausencia_justificada');
             $table->text('justificacion')->nullable();
+
+            $table->index('dia_laborable_id');
             
             $table->timestamps();
 
-            $table->foreign('empleado')
+            $table->foreign('empleado_id')
                 ->references('id')
                 ->on('empleados')
                 ->onUpdate('cascade')
                 ->onDelete('restrict');
 
-            $table->foreign('dia_laborable')
+            $table->foreign('dia_laborable_id')
                 ->references('id')
-                ->on('dias_laborables')
+                ->on('dia_laborables')
                 ->onUpdate('cascade')
                 ->onDelete('restrict');
 

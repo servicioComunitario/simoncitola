@@ -19,6 +19,8 @@ class CreateMatriculaFinalesTable extends Migration
             $table->date('dia_laborable_id');
             $table->text('observacion')->nullable();
 
+            $table->index('dia_laborable_id');
+
             $table->timestamps();
 
             $table->foreign('seccion_id')
@@ -29,7 +31,7 @@ class CreateMatriculaFinalesTable extends Migration
 
             $table->foreign('dia_laborable_id')
                 ->references('id')
-                ->on('dias_laborables')
+                ->on('dia_laborables')
                 ->onUpdate('cascade')
                 ->onDelete('restrict');
 

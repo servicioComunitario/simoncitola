@@ -15,20 +15,22 @@ class CreateUsuariosTable extends Migration
     {
         Schema::create('usuarios', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('email')->unique();
+            $table->string('email', 100)->unique();
             $table->string('password');
-            $table->integer('rol_id')->index();
-            $table->integer('empleado_id')->index();
+            $table->integer('rol_id')->unsigned();
+            $table->integer('empleado_id')->unsigned();
             $table->rememberToken();
             $table->timestamps();
 
             $table->foreign('rol_id')
-                ->references('id')->on('roles')
+                ->references('id')
+                ->on('roles')
                 ->onUpdate('cascade')
                 ->onDelete('restrict');
 
             $table->foreign('empleado_id')
-                ->references('id')->on('empleados')
+                ->references('id')
+                ->on('empleados')
                 ->onUpdate('cascade')
                 ->onDelete('restrict');
         });

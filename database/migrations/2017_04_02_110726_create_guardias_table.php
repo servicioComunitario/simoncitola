@@ -15,14 +15,16 @@ class CreateGuardiasTable extends Migration
     {
         Schema::create('guardias', function (Blueprint $table) {
             $table->increments('id');
-            $table->date('dia_laborable_id');
+            $table->date('dia_laborable_id')->unique();
             $table->integer('empleado_id')->unsigned();
+
+
 
             $table->timestamps();
 
             $table->foreign('dia_laborable_id')
                 ->references('id')
-                ->on('dias_laborables')
+                ->on('dia_laborables')
                 ->onUpdate('cascade')
                 ->onDelete('restrict');
 

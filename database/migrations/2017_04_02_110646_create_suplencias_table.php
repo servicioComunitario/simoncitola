@@ -19,6 +19,8 @@ class CreateSuplenciasTable extends Migration
             $table->integer('empleado_suplantado_id')->unsigned();
             $table->text('observacion');
             $table->date('dia_laborable_id');
+
+            $table->index('dia_laborable_id');
             
             $table->timestamps();
 
@@ -36,7 +38,7 @@ class CreateSuplenciasTable extends Migration
 
             $table->foreign('dia_laborable_id')
                 ->references('id')
-                ->on('dias_laborables')
+                ->on('dia_laborables')
                 ->onUpdate('cascade')
                 ->onDelete('restrict');
         });

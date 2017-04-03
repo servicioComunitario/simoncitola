@@ -34,7 +34,7 @@ class CreateEmpleadosTable extends Migration
             $table->text('titulo')->nullable();
             $table->text('especialidad')->nullable();
             $table->text('codigo')->nullable();
-            $table->text('funcion')->unsigned();
+            $table->integer('funcion_id')->unsigned();
             $table->text('nivel_educativo')->nullable();
             $table->text('centro_operativo_labora')->nullable();
             $table->integer('numero_horas')->unsigned();
@@ -55,7 +55,7 @@ class CreateEmpleadosTable extends Migration
                 ->onUpdate('cascade')
                 ->onDelete('restrict');
 
-            $table->foreign('fucnion_id')
+            $table->foreign('funcion_id')
                 ->references('id')
                 ->on('cargos')
                 ->onUpdate('cascade')
