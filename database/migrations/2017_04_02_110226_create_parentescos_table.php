@@ -15,6 +15,7 @@ class CreateParentescosTable extends Migration
     {
         Schema::create('parentescos', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('nombre', 20)->unique();
             $table->timestamps();
         });
     }

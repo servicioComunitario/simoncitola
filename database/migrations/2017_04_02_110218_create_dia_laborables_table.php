@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAsistenciaDiariaAlumnosTable extends Migration
+class CreateDiaLaborablesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,17 @@ class CreateAsistenciaDiariaAlumnosTable extends Migration
      */
     public function up()
     {
-        Schema::create('asistencia_diaria_alumnos', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('guardia_id')->unsigned();
-            $table->text('observacion')->nullable();
-
+        Schema::create('dia_laborables', function (Blueprint $table) {
+            $table->date('id');
+            $table->integer('periodo_id')->unsigned();
+            $table->boolean('academico');
             $table->timestamps();
 
-            $table->foreign('guardia_id')
+            $table->primary('id');
+            
+            $table->foreign('periodo_id')
                 ->references('id')
-                ->on('guardias')
+                ->on('periodos')
                 ->onUpdate('cascade')
                 ->onDelete('restrict');
         });
@@ -35,6 +36,6 @@ class CreateAsistenciaDiariaAlumnosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('asistencia_diaria_alumnos');
+        Schema::dropIfExists('dia_laborables');
     }
 }

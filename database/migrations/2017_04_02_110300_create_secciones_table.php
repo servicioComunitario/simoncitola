@@ -15,7 +15,26 @@ class CreateSeccionesTable extends Migration
     {
         Schema::create('secciones', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('nombre');
+            $table->integer('periodo_id')->unsigned();
+            $table->integer('empleado_id')->unsigned();
+            $table->integer('max_alumnos');
+            $table->integer('edad_alumno');
+
             $table->timestamps();
+
+            $table->foreign('periodo_id')
+                ->references('id')
+                ->on('periodos')
+                ->onUpdate('cascade')
+                ->onDelete('restrict');
+
+            $table->foreign('empleado_id')
+                ->references('id')
+                ->on('empleados')
+                ->onUpdate('cascade')
+                ->onDelete('restrict');
+            
         });
     }
 

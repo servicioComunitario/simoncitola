@@ -15,7 +15,26 @@ class CreateActaInasistenciasTable extends Migration
     {
         Schema::create('acta_inasistencias', function (Blueprint $table) {
             $table->increments('id');
+            $table->date('dia_laborable_id');
+            $table->integer('empleado_id')->unsigned();
+            $table->date('fecha_justificacion');
+            $table->date('fecha_no_justificacion');
+
+            $table->index('dia_laborable_id');
+
             $table->timestamps();
+
+            $table->foreign('dia_laborable_id')
+                ->references('id')
+                ->on('dia_laborables')
+                ->onUpdate('cascade')
+                ->onDelete('restrict');
+
+            $table->foreign('empleado_id')
+                ->references('id')
+                ->on('empleados')
+                ->onUpdate('cascade')
+                ->onDelete('restrict');
         });
     }
 
