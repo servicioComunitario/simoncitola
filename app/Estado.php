@@ -8,6 +8,6 @@ class Estado extends Model{
 
 
 	public function alumnos(){
-      return $this->hasMany('App\Alumno');
-  }
+    	return $this->hasMany('App\Alumno');
+  	}
 }
