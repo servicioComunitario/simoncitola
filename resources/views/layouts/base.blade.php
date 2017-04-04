@@ -7,7 +7,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<title>{{ getenv('APP_NOMBRE') }}</title>
+	<title>{{ config('app.name') }}</title>
 	
 	<!-- Bootstrap CSS 3.3.7-->
 	<link href={{ URL::asset('css/bootstrap.min.css') }} rel="stylesheet">

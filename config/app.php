@@ -12,7 +12,8 @@ return [
     | any other location as required by the application or its packages.
     */
 
-    'name' => 'Laravel',
+    'name' => env('APP_NOMBRE', 'Simoncito "Las Américas"'),
+    'siglado' => env('APP_SIGLADO', 'SLA'),
 
     /*
     |--------------------------------------------------------------------------
