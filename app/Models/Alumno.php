@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -20,15 +20,15 @@ class Alumno extends Model
 	];
 
   public function estado(){
-    return $this->belongsTo('App\Estado');
+    return $this->belongsTo('App\Models\Estado');
   }
 
   public function asistenciasAlumnos(){
-    return $this->hasMany('App\AsistenciaAlumno');
+    return $this->hasMany('App\Models\AsistenciaAlumno');
   }
 
 	public function inscripciones(){
-    return $this->hasMany('App\Inscripcion');
+    return $this->hasMany('App\Models\Inscripcion');
   }
   
 }

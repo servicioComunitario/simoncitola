@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -19,7 +19,7 @@ class AsistenciaEmpleado extends Model{
 	];
 
 	public function empleado(){
-    return $this->belongsTo('App\Empleado');
+    return $this->belongsTo('App\Models\Empleado');
   }
 }
 

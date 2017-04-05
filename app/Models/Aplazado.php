@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -15,10 +15,10 @@ class Aplazado extends Model
 	];
 
 	public function inscripcion(){
-    return $this->hasOne('App\Inscripcion');
+    return $this->hasOne('App\Models\Inscripcion');
   }
 
 	public function motivo(){
-    return $this->hasOne('App\Motivo');
+    return $this->hasOne('App\Models\Motivo');
   }
 }

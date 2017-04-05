@@ -1,10 +1,10 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class MatriculaFinal extends Model
+class Motivo extends Model
 {
     //
 }

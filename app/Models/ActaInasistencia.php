@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -16,10 +16,10 @@ class ActaInasistencia extends Model
 
 
 	public function empleado(){
-    return $this->belongsTo('App\Empleado');
+    return $this->belongsTo('App\Models\Empleado');
 	}
 
 	public function diasLaborables(){
-    return $this->belongsToMany('App\DiaLaboral');
+    return $this->belongsToMany('App\Models\DiaLaboral');
   }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -13,7 +13,7 @@ class AsistenciaDiariaAlumno extends Model{
 	];
 
 	public function guardia(){
-    return $this->hasOne('App\Guardia');
+    return $this->hasOne('App\Models\Guardia');
   }
 
 }

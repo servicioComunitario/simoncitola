@@ -1,12 +1,13 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
+    protected $table = "users";
 
     use Notifiable;
 
@@ -29,6 +30,6 @@ class User extends Authenticatable
     ];
 
     public function empleado(){
-        return $this->belongsTo('App\Empleado');
+        return $this->belongsTo('App\Models\Empleado');
     }
 }

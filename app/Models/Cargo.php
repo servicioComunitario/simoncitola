@@ -1,12 +1,12 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
 class Cargo extends Model{
 
 	public function empleados(){
-    return $this->hasMany('App\Empleado');
+    return $this->hasMany('App\Models\Empleado');
   }
 }
