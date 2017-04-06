@@ -14,12 +14,11 @@ class ActaInasistencia extends Model
 		'fecha_no_justificacion'
 	];
 
-
 	public function empleado(){
-    return $this->belongsTo('App\Models\Empleado');
+    return $this->belongsTo(Empleado::class);
 	}
 
-	public function diasLaborables(){
-    return $this->belongsToMany('App\Models\DiaLaboral');
+	public function diaLaborables(){
+    return $this->belongsToMany(DiaLaboral::class);
   }
 }

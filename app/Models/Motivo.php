@@ -6,5 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Motivo extends Model
 {
-    //
+
+	protected $fillable = [
+		'nombre',
+		'descripcion'
+	];
+
+	public function aplazados(){
+      return $this->hasMany(Aplazado::class);
+  }
 }

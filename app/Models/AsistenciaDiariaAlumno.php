@@ -8,12 +8,11 @@ class AsistenciaDiariaAlumno extends Model{
 	
 	protected $fillable = [
 		'guardia_id',
-		'dia_laborable_id',
 		'observacion'
 	];
 
 	public function guardia(){
-    return $this->hasOne('App\Models\Guardia');
+    return $this->belongsTo(Guardia::class);
   }
 
 }

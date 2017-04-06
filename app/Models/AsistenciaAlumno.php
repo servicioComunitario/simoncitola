@@ -13,6 +13,10 @@ class AsistenciaAlumno extends Model
 	];
 
 	public function alumno(){
-    return $this->belongsTo('App\Models\Alumno');
+    return $this->belongsTo(Alumno::class);
+	}
+
+	public function diaLaborable(){
+		return $this->belongsTo(DiaLaborable::class);
 	}
 }

@@ -10,15 +10,15 @@ class Aplazado extends Model
 	protected $fillable = [
 		'inscripcion_id',
 		'motivo_id',
-		'dia_laborable',
+		'dia_laborable_id',
 		'motivo'
 	];
 
 	public function inscripcion(){
-    return $this->hasOne('App\Models\Inscripcion');
+    return $this->belongsTo(Inscripcion::class);
   }
 
 	public function motivo(){
-    return $this->hasOne('App\Models\Motivo');
+    return $this->belongsTo(Motivo::class);
   }
 }

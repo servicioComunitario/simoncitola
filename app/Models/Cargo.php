@@ -6,7 +6,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class Cargo extends Model{
 
-	public function empleados(){
-    return $this->hasMany('App\Models\Empleado');
+	protected $fillable = [
+		'nombre',
+		'nivel'
+	];
+
+	public function empleadosSegunCargo(){
+    return $this->hasMany(Empleado::class);
+  }
+
+  public function empleadosSegunFuncion(){
+    return $this->hasMany(Empleado::class, 'funcion', 'id' );
   }
 }

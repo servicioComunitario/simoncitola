@@ -20,15 +20,15 @@ class Alumno extends Model
 	];
 
   public function estado(){
-    return $this->belongsTo('App\Models\Estado');
+    return $this->belongsTo(Estado::class);
   }
 
-  public function asistenciasAlumnos(){
-    return $this->hasMany('App\Models\AsistenciaAlumno');
+  public function asistenciaAlumnos(){
+    return $this->hasMany(AsistenciaAlumno::class);
   }
 
 	public function inscripciones(){
-    return $this->hasMany('App\Models\Inscripcion');
+    return $this->hasMany(Inscripcion::class);
   }
   
 }

@@ -18,8 +18,12 @@ class AsistenciaEmpleado extends Model{
 		'justificacion'
 	];
 
+	public function diaLaborable(){
+		return $this->belongsTo(DiaLaborable::class);
+	}
+
 	public function empleado(){
-    return $this->belongsTo('App\Models\Empleado');
+    return $this->belongsTo(Empleado::class);
   }
 }
 
