@@ -69,7 +69,7 @@
                   </li>
                   <li><a><i class="fa fa-edit"></i> Inscripción <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="{{ route('inscripcion.inscripciones.create') }}">NUevo</a></li>
+                      <li><a href={{ route('inscripciones.create') }}>NUevo</a></li>
                       <li><a href="form_advanced.html">Advanced Components</a></li>
                       <li><a href="form_validation.html">Form Validation</a></li>
                       <li><a href="form_wizards.html">Form Wizard</a></li>
@@ -125,8 +125,9 @@
                       <li><a href="profile.html">Profile</a></li>
                     </ul>
                   </li>
-                  <li><a><i class="fa fa-windows"></i> Extras <span class="fa fa-chevron-down"></span></a>
+                  <li><a><i class="fa fa-windows"></i>Administracion<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
+                      <li><a href={{ route('cargos.index') }}>Cargos</a></li>
                       <li><a href="page_403.html">403 Error</a></li>
                       <li><a href="page_404.html">404 Error</a></li>
                       <li><a href="page_500.html">500 Error</a></li>
