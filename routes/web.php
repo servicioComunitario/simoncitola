@@ -36,7 +36,6 @@ Route::group(['middleware' => 'auth'], function(){
 
   ////////////// Ruta alumnos ///////////////////////////////////
   Route::name('create_alumno_path')->get('/alumnos','AlumnoController@index');
-
-
+  Route::name('inscripcion')->resource('inscripciones', 'InscripcionController');
 
 });
