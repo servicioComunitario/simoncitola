@@ -7,8 +7,8 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<title>{{ config('app.name') }}</title>
-	
+	<title>{{ config('app.name', 'Laravel') }}</title>
+
 	<!-- Bootstrap CSS 3.3.7-->
 	<link href={{ URL::asset('css/bootstrap.min.css') }} rel="stylesheet">
 	<!-- Font Awesome -->
@@ -20,7 +20,7 @@
 
 	<!-- Custom Theme Style -->
 	<link href={{ URL::asset('css/custom.min.css') }} rel="stylesheet">
-	
+
 
 </head>
   <body class="nav-md" style="background-color: #2A3F54">
@@ -29,20 +29,27 @@
         <div class="col-md-3 left_col menu_fixed">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-              <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Gentelella Alela!</span></a>
+              <a href="{{ route('home_path')}}" class="site_title">
+								<i class="fa fa-paw"></i>
+								{{-- <span>Gentelella Alela!</span> --}}
+								{{-- <span>{{ config('app.name', 'Laravel') }}</span> --}}
+								<span>Simoncito LA</span>
+							</a>
             </div>
 
             <div class="clearfix"></div>
 
             <!-- menu profile quick info -->
             <div class="profile clearfix">
+							{{--
               <div class="profile_pic">
                 <img src={{ URL::asset('images/img.png') }} alt="..." class="img-circle profile_img">
-              </div>
-              <div class="profile_info">
-                <span>Welcome,</span>
-                <h2>John Doe</h2>
-              </div>
+              </div> --}}
+
+              <div class="profile_info menu_section">
+                {{-- <span>Bienvenido,</span> --}}
+								<h3>@yield("nombreUsuario")</h3>
+							</div>
             </div>
             <!-- /menu profile quick info -->
 
@@ -144,7 +151,7 @@
                         <li><a href="#level1_2">Level One</a>
                         </li>
                     </ul>
-                  </li>                  
+                  </li>
                   <li><a href="javascript:void(0)"><i class="fa fa-laptop"></i> Landing Page <span class="label label-success pull-right">Coming Soon</span></a></li>
                 </ul>
               </div>
@@ -163,9 +170,18 @@
               <a data-toggle="tooltip" data-placement="top" title="Lock">
                 <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
               </a>
-              <a data-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
+              <a data-toggle="tooltip" data-placement="top" title="Salir" href="{{ route('logout') }}"
+								onclick="event.preventDefault();
+											 document.getElementById('logout-form').submit();">
                 <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+
+								<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+										{{ csrf_field() }}
+								</form>
+
               </a>
+
+
             </div>
             <!-- /menu footer buttons -->
           </div>
@@ -291,7 +307,7 @@
           </div>
           <div class="clearfix"></div>
         </footer> --}}
-		
+
     </div>
     <!-- jQuery -->
     <script src={{ URL::asset('js/jquery.min.js') }}></script>
@@ -308,4 +324,3 @@
     <script src={{ URL::asset('js/custom.min.js') }}></script>
   </body>
 </html>
-

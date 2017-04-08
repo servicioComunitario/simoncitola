@@ -13,10 +13,9 @@
 
 Auth::routes();
 
-Route::get('/', function () {
+Route::name('users_path')->get('/', function () {
     return redirect('/login');
 });
-Route::get('/home', 'HomeController@index');
 /*
 Route::get('/', function () {
     return view('welcome');
@@ -25,8 +24,6 @@ Route::get('/', function () {
 
 // Route::get('/', ;});
 
-////////////// Ruta alumnos ///////////////////////////////////
-Route::name('alumnos_path')->get('/alumnos','AlumnoController@index');
 // Route::name('create_alumno_path')->get('/alumno/create','AlumnoController@create');
 // Route::name('store_alumno_path')->get('/alumnos','AlumnoController@store');
 // Route::name('alumno_path')->get('/alumno/{alumno}','AlumnoController@show');
@@ -34,18 +31,12 @@ Route::name('alumnos_path')->get('/alumnos','AlumnoController@index');
 // Route::name('update_alumno_path')->get('/alumno/{alumno}/','AlumnoController@update');
 
 
+Route::group(['middleware' => 'auth'], function(){
+  Route::name('home_path')->get('/home', 'HomeController@index');
+
+  ////////////// Ruta alumnos ///////////////////////////////////
+  Route::name('create_alumno_path')->get('/alumnos','AlumnoController@index');
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+});
