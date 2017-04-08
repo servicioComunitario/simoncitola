@@ -13,7 +13,8 @@ class InscripcionController extends Controller
      */
     public function index()
     {
-        //
+        // return view('inscripciones.index');
+        return view('inscripciones.index');
     }
 
     /**
@@ -23,7 +24,7 @@ class InscripcionController extends Controller
      */
     public function create()
     {
-        //
+        return view('inscripciones.create');
     }
 
     /**
