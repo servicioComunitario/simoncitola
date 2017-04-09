@@ -16,6 +16,11 @@ Auth::routes();
 Route::name('users_path')->get('/', function () {
     return redirect('/login');
 });
+
+
+Route::get('prueba', function(){
+	return view('prueba');
+});
 /*
 Route::get('/', function () {
     return view('welcome');
@@ -43,6 +48,7 @@ Route::group(['middleware' => 'auth'], function(){
   
   # Cargos
   Route::resource('cargos', 'CargoController');
+  Route::name("cargos.show")->get('cargos/{id}/{eliminar}', "CargoController@show");
 
 
 

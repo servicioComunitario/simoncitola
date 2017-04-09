@@ -15,7 +15,6 @@ class CargoController extends Controller
     public function index()
     {
         $cargos = Cargo::all();
-        //dd($cargos);
         return view("cargo.index")->with("cargos", $cargos);
     }
 
@@ -26,7 +25,7 @@ class CargoController extends Controller
      */
     public function create()
     {
-        //
+        return view("cargo.create");
     }
 
     /**
@@ -46,9 +45,11 @@ class CargoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id, $otro)
     {
-        //
+        //dd($id);
+        dd($otro);
+        return "32132131";
     }
 
     /**
