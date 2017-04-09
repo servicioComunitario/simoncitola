@@ -16,6 +16,11 @@ Auth::routes();
 Route::name('users_path')->get('/', function () {
     return redirect('/login');
 });
+
+
+Route::get('prueba', function(){
+	return view('prueba');
+});
 /*
 Route::get('/', function () {
     return view('welcome');
