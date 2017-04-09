@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use App\Models\Cargo;
 use App\Http\Requests\CreateCargoRequest;
 use App\Http\Requests\UpdateCargoRequest;
@@ -41,7 +40,7 @@ class CargoController extends Controller
         return redirect()->route('cargos.edit', $cargo->id);
     }
 
-    public function show($id, $otro)
+    public function show($id)
     {
         return "Show";
     }

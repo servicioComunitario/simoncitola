@@ -37,20 +37,17 @@ Route::get('/', function () {
 
 
 Route::group(['middleware' => 'auth'], function(){
-  Route::name('home_path')->get('/home', 'HomeController@index');
+    Route::name('home_path')->get('/home', 'HomeController@index');
 
-  ////////////// Ruta alumnos ///////////////////////////////////
-  Route::resource('inscripciones', 'InscripcionController');
-
-
-
-  //////////////////// Admnistracion /////////////////////////////////////////
-  
-  # Cargos
-  Route::resource('cargos', 'CargoController');
-  Route::name("cargos.show")->get('cargos/{id}/{eliminar}', "CargoController@show");
+    ////////////// Ruta alumnos ///////////////////////////////////
+    Route::resource('inscripciones', 'InscripcionController');
 
 
 
-
+    //////////////////// Admnistracion /////////////////////////////////////////
+    # Cargos
+    Route::resource('cargos', 'CargoController');
+ 
+    # Estados
+    Route::resource('estados', 'EstadoController');
 });
