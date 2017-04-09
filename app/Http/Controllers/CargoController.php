@@ -47,11 +47,8 @@ class CargoController extends Controller
      */
     public function show($id, $otro)
     {
-<<<<<<< HEAD
-=======
         //dd($id);
         dd($otro);
->>>>>>> origin/master
         return "32132131";
     }
 
