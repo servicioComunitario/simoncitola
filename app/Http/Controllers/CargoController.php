@@ -26,7 +26,7 @@ class CargoController extends Controller
      */
     public function create()
     {
-        //
+        return view("cargo.create");
     }
 
     /**
@@ -48,7 +48,7 @@ class CargoController extends Controller
      */
     public function show($id)
     {
-        //
+        return "32132131";
     }
 
     /**
