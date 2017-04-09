@@ -32,6 +32,8 @@ class CargoController extends Controller
                 'nombre',
                 'nivel'
             ));
+
+            session()->flash('msg_success', "El cargo '$cargo->nombre' ha sido creado.");
         } catch (Exception $e) {
             session()->flash('msg_danger', $e->getMessage());
         }
@@ -58,6 +60,8 @@ class CargoController extends Controller
                     'nivel'
                 )
             );
+
+            session()->flash('msg_info', "El cargo '$cargo->nombre' ha sido actualizado.");
         } catch (Exception $e) {
             session()->flash('msg_danger', $e->getMessage());
         }
@@ -65,10 +69,15 @@ class CargoController extends Controller
         return redirect()->route('cargos.edit', $cargo->id);
     }
 
-    public function destroy(Cargo $cargo)
+    public function destroy(Request $request)
     {
         try {
+
+            $cargo = Cargo::find($request->id);
+            
             $cargo->delete();
+
+            session()->flash('msg_danger', "El cargo '$cargo->nombre' ha sido eliminado.");
         } catch (Exception $e) {
             session()->flash('msg_danger', $e->getMessage());
         }
