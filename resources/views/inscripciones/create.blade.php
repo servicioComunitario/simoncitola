@@ -95,9 +95,12 @@
               <form class="form-horizontal form-label-left">
                 <div class="form-group">
                   <label for="nombre" class="control-label col-md-3 col-sm-3 col-xs-12">Primer nombre: </label>
-                  <div class="col-md-9 col-sm-9 col-xs-12">
-                    <input type="text" name="nombre" class="form-control" placeholder="Primer nombre">
+                  <div class="">
+                    <label>
+                      <input type="checkbox" class="js-switch" checked="" data-switchery="true" style="display: none;"><span class="switchery switchery-default" style="background-color: rgb(38, 185, 154); border-color: rgb(38, 185, 154); box-shadow: rgb(38, 185, 154) 0px 0px 0px 11px inset; transition: border 0.4s, box-shadow 0.4s, background-color 1.2s;"><small style="left: 12px; background-color: rgb(255, 255, 255); transition: background-color 0.4s, left 0.2s;"></small></span> Checked
+                    </label>
                   </div>
+
                 </div>
 
               </form>
