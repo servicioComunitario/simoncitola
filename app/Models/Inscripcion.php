@@ -36,8 +36,8 @@ class Inscripcion extends Model
 		return $this->belongsTo(DiaLaborable::class);
 	}
 
-	public function seccion(){
-    return $this->belongsTo(Seccion::class);
+	public function responsable(){
+  	return $this->belongsTo(Empleado::class);
   }
 
   public function padre(){
@@ -51,6 +51,10 @@ class Inscripcion extends Model
   public function responsable(){
   	return $this->belongsTo(Representante::class, 'responsable_id', 'id');
   }
+
+	public function seccion(){
+		return $this->belongsTo(Seccion::class);
+	}
 
 
 }

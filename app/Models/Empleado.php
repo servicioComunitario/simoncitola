@@ -71,7 +71,9 @@ class Empleado extends Model{
     return $this->hasOne(User::class);
   }
 
-
+  public function inscripcion(){
+    return $this->hasOne(Inscripcion::class);
+  }
 
 
 }
