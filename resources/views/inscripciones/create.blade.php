@@ -19,12 +19,12 @@
               <div class="clearfix"></div>
             </div>
 
-            <div class="x_content">
+            <div class="x_content" style="display:none">
               <form class="form-horizontal form-label-left">
                 <div class="form-group">
-                  <label for="nombre" class="control-label col-md-3 col-sm-3 col-xs-12">Primer nombre: </label>
+                  <label for="nombrePadre" class="control-label col-md-3 col-sm-3 col-xs-12">Primer nombre: </label>
                   <div class="col-md-9 col-sm-9 col-xs-12">
-                    <input type="text" name="nombre" class="form-control" placeholder="Primer nombre">
+                    <input type="text" name="nombrePadre" class="form-control" placeholder="Primer nombre" value="{{ $padre->nombre or old('nombrePadre') }}">
                   </div>
                 </div>
                 <div class="form-group">
@@ -91,17 +91,81 @@
               <div class="clearfix"></div>
             </div>
 
-            <div class="x_content">
+            <div class="x_content" >
               <form class="form-horizontal form-label-left">
                 <div class="form-group">
-                  <label for="nombre" class="control-label col-md-3 col-sm-3 col-xs-12">Primer nombre: </label>
+                  <label for="nombre" class="control-label col-md-7 col-sm-7 col-xs-12">Responsable: </label>
                   <div class="">
-                    <label>
-                      <input type="checkbox" class="js-switch" checked="" data-switchery="true" style="display: none;"><span class="switchery switchery-default" style="background-color: rgb(38, 185, 154); border-color: rgb(38, 185, 154); box-shadow: rgb(38, 185, 154) 0px 0px 0px 11px inset; transition: border 0.4s, box-shadow 0.4s, background-color 1.2s;"><small style="left: 12px; background-color: rgb(255, 255, 255); transition: background-color 0.4s, left 0.2s;"></small></span> Checked
-                    </label>
+                    Padre <input type="radio" name="partidaNacimiento" value="0"> &nbsp;
+                    Madre <input type="radio" name="partidaNacimiento" value="1"> &nbsp;
+                    Otro <input type="radio" name="partidaNacimiento" value="1">
                   </div>
-
                 </div>
+
+                <div class="form-group">
+                  <label for="nombre" class="control-label col-md-7 col-sm-7 col-xs-12">Partida de nacimiento: </label>
+                  <div class="">
+                    Si <input type="radio" name="partidaNacimiento" value="0"> &nbsp;
+                    no <input type="radio" name="partidaNacimiento" value="1">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="nombre" class="control-label col-md-7 col-sm-7 col-xs-12">Certificado de vacunas: </label>
+                  <div class="">
+                    Si <input type="radio" name="partidaNacimiento" value="0"> &nbsp;
+                    no <input type="radio" name="partidaNacimiento" value="1">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="nombre" class="control-label col-md-7 col-sm-7 col-xs-12">Fotos: </label>
+                  <div class="">
+                    Si <input type="radio" name="partidaNacimiento" value="0"> &nbsp;
+                    no <input type="radio" name="partidaNacimiento" value="1">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="nombre" class="control-label col-md-7 col-sm-7 col-xs-12">Copia cedula de la madre: </label>
+                  <div class="">
+                    Si <input type="radio" name="partidaNacimiento" value="0"> &nbsp;
+                    no <input type="radio" name="partidaNacimiento" value="1">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="nombre" class="control-label col-md-7 col-sm-7 col-xs-12">Constancia de trabajo: </label>
+                  <div class="">
+                    Si <input type="radio" name="partidaNacimiento" value="0"> &nbsp;
+                    no <input type="radio" name="partidaNacimiento" value="1">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="nombre" class="control-label col-md-7 col-sm-7 col-xs-12">Carta de residencia: </label>
+                  <div class="">
+                    Si <input type="radio" name="partidaNacimiento" value="0"> &nbsp;
+                    no <input type="radio" name="partidaNacimiento" value="1">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="nombre" class="control-label col-md-7 col-sm-7col-xs-12">¿Otros niños en la institución?: </label>
+                  <div class="">
+                    Si <input type="radio" name="partidaNacimiento" value="0"> &nbsp;
+                    no <input type="radio" name="partidaNacimiento" value="1">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="nombre" class="control-label col-md-7 col-sm-7 col-xs-12">¿Esta dispuesto a colaborar con la institución?: </label>
+                  <div class="">
+                    Si <input type="radio" name="partidaNacimiento" value="0"> &nbsp;
+                    no <input type="radio" name="partidaNacimiento" value="1">
+                  </div>
+                </div>
+
 
               </form>
             </div>
@@ -126,7 +190,7 @@
               <div class="clearfix"></div>
             </div>
 
-            <div class="x_content">
+            <div class="x_content" style="display:none">
             	<form class="form-horizontal form-label-left">
             	  <div class="form-group">
             	    <label for="nombre" class="control-label col-md-3 col-sm-3 col-xs-12">Primer nombre: </label>
@@ -223,7 +287,7 @@
               <div class="clearfix"></div>
             </div>
 
-            <div class="x_content">
+            <div class="x_content" style="display:none">
             	<form class="form-horizontal form-label-left">
             	  <div class="form-group">
             	    <label for="nombre" class="control-label col-md-3 col-sm-3 col-xs-12">Primer nombre: </label>
