@@ -275,6 +275,7 @@
         </div> --}}
         <div class="right_col" role="main" >
           {{-- <div class="container-fluid"> --}}
+            @include('layouts._messages')
             @yield("contenido")
           {{-- </div> --}}
         </div>

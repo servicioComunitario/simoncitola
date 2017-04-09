@@ -21,12 +21,18 @@
     					<label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Nombre <span class="required">*</span></label>
     					<div class="col-md-6 col-sm-6 col-xs-12">
     						<input type="text" name="nombre" class="form-control col-md-7 col-xs-12" placeholder="Nombre del Cargo" value="{{ $cargo->nombre or old('nombre') }}">
+                            @if ($errors->has('nombre'))
+                                <span style="color: red;">{{ $errors->first('nombre') }}</span>
+                            @endif
     					</div>
     				</div>
     				<div class="form-group">
     					<label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Nivel <span class="required">*</span></label>
     					<div class="col-md-6 col-sm-6 col-xs-12">
     						<input type="text" name="nivel" class="form-control col-md-7 col-xs-12" placeholder="Nivel del Cargo" value="{{ $cargo->nivel or old('nivel') }}">
+                            @if ($errors->has('nivel'))
+                                <span style="color: red;">{{ $errors->first('nivel') }}</span>
+                            @endif
     					</div>
     				</div>
     				<div class="ln_solid"></div>

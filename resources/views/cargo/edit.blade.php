@@ -6,6 +6,6 @@
 			<h1 class="">Editar Cargo</h1>
 		</div>
 	</div>
-    @include('cargo._formulario', ['cargo' => $cargo])    
+    @include('cargo._form', ['cargo' => $cargo])    
 @endsection
 

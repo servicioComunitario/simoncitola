@@ -13,8 +13,11 @@ class CargoController extends Controller
     public function index()
     {
         $cargos = Cargo::all();
+
         return view("cargo.index")->with("cargos", $cargos);
     }
+
+    
 
     public function create()
     {
@@ -24,19 +27,13 @@ class CargoController extends Controller
 
     public function store(CreateCargoRequest $request)
     {
-
-        try {
-            DB::beginTransaction();
-
+        try{
             $cargo = Cargo::create($request->only(
                 'nombre',
                 'nivel'
             ));
-
-            DB::commit();
         } catch (Exception $e) {
-            DB::rollback();
-            return $e->getMessage();
+            session()->flash('msg_danger', $e->getMessage());
         }
 
         return redirect()->route('cargos.edit', $cargo->id);
@@ -54,20 +51,15 @@ class CargoController extends Controller
 
     public function update(UpdateCargoRequest $request, Cargo $cargo)
     {
-        try {
-            DB::beginTransaction();
-
+        try{
             $cargo->update(
                 $request->only(
                     'nombre',
                     'nivel'
                 )
             );
-            
-            DB::commit();
         } catch (Exception $e) {
-            DB::rollback();
-            return $e->getMessage();
+            session()->flash('msg_danger', $e->getMessage());
         }
 
         return redirect()->route('cargos.edit', $cargo->id);
@@ -78,7 +70,7 @@ class CargoController extends Controller
         try {
             $cargo->delete();
         } catch (Exception $e) {
-            
+            session()->flash('msg_danger', $e->getMessage());
         }
 
         return redirect()->route('cargos.index');

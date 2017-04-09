@@ -7,7 +7,7 @@
 		</div>
 	</div>
 
-	@include('cargo._formulario', ['cargo' => $cargo])
+	@include('cargo._form', ['cargo' => $cargo])
 	
 @endsection
 
