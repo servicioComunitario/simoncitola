@@ -1,12 +1,21 @@
 @extends('layouts.base')
 
 @section('contenido')
+<<<<<<< HEAD
 	{{-- <div class="row">
 		<div class="col-md-12 col-sm-12 col-xs-12 text-center">
 			<h1 class="">Crear Cargo</h1>
 		</div>
 	</div> --}}
    {{--  <div class="row">
+=======
+	<div class="row">
+		<div class="col-md-12 col-sm-12 col-xs-12 text-center">
+			<h1 class="">Crear Cargo</h1>
+		</div>
+	</div>
+    <div class="row">
+>>>>>>> origin/master
     	<div class="col-md-12 col-sm-12 col-xs-12">
         	<div class="x_panel">
           		<div class="x_title">
@@ -43,7 +52,11 @@
           		</div>
         	</div>
       	</div>
+<<<<<<< HEAD
 	</div> --}}
+=======
+	</div>
+>>>>>>> origin/master
 	{{-- <div class="row">
     	<div class="col-md-12 col-sm-12 col-xs-12">
         	<div class="x_panel">

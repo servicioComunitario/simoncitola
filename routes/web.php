@@ -48,6 +48,7 @@ Route::group(['middleware' => 'auth'], function(){
   
   # Cargos
   Route::resource('cargos', 'CargoController');
+  Route::name("cargos.show")->get('cargos/{id}/{eliminar}', "CargoController@show");
 
 
 
