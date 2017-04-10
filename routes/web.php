@@ -35,6 +35,7 @@ Route::get('/', function () {
 // Route::name('edit_alumno_path')->get('/alumno/{alumno}/edit','AlumnoController@edit');
 // Route::name('update_alumno_path')->get('/alumno/{alumno}/','AlumnoController@update');
 
+Route::get('prueba/{value?}', 'PruebaController@singularSpanol');
 
 Route::group(['middleware' => 'auth'], function(){
     Route::name('home_path')->get('/home', 'HomeController@index');
@@ -43,18 +44,19 @@ Route::group(['middleware' => 'auth'], function(){
     Route::resource('inscripciones', 'InscripcionController');
 
 
-
+    Route::group(['middleware' => 'roles'], function(){
     //////////////////// Admnistración /////////////////////////////////////////
-    # Cargos
-    Route::resource('cargos', 'CargoController');
- 
-    # Estados
-    Route::resource('estados', 'EstadoController');
+        # Cargos
+        Route::resource('cargos', 'CargoController');
+     
+        # Estados
+        Route::resource('estados', 'EstadoController');
 
-    # Motivos
-    Route::resource('motivos', 'MotivoController');
+        # Motivos
+        Route::resource('motivos', 'MotivoController');
 
-    # Parentescos
-    Route::resource('parentescos', 'ParentescoController');
+        # Parentescos
+        Route::resource('parentescos', 'ParentescoController');
+    });
     
 });

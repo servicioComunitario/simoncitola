@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Models\Rol;
 
 class User extends Authenticatable
 {
@@ -35,5 +36,14 @@ class User extends Authenticatable
 
   public function roles(){
     return $this->belongsTo(Rol::class);
+  }
+
+  public function tipodeRol()
+  {
+    $rol=Rol::where('id','=',$this->rol_id)->firstOrFail();
+    if ($rol->nivel<=0) {
+      return 1;
+    }
+    return $rol;
   }
 }
