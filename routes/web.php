@@ -46,17 +46,21 @@ Route::group(['middleware' => 'auth'], function(){
 
     Route::group(['middleware' => 'roles'], function(){
     //////////////////// Admnistración /////////////////////////////////////////
-        # Cargos
-        Route::resource('cargos', 'CargoController');
-     
-        # Estados
-        Route::resource('estados', 'EstadoController');
 
-        # Motivos
-        Route::resource('motivos', 'MotivoController');
+    # Cargos
+    Route::resource('cargos', 'CargoController');
+ 
+    # Estados
+    Route::resource('estados', 'EstadoController');
 
-        # Parentescos
-        Route::resource('parentescos', 'ParentescoController');
+    # Motivos
+    Route::resource('motivos', 'MotivoController');
+
+    # Parentescos
+    Route::resource('parentescos', 'ParentescoController');
+
+    # Roles
+    Route::resource('roles', 'RolController');
     });
-    
+
 });
