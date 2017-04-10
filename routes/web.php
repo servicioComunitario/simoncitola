@@ -56,5 +56,8 @@ Route::group(['middleware' => 'auth'], function(){
 
     # Parentescos
     Route::resource('parentescos', 'ParentescoController');
-    
+
+    # Parentescos
+    Route::resource('roles', 'RolController');
+
 });
