@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Contracts\Auth\Guard;
 use App\Models\Rol;
 
-class Roles
+class Administradores
 {
 
     protected $auth;

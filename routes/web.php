@@ -44,7 +44,7 @@ Route::group(['middleware' => 'auth'], function(){
     Route::resource('inscripciones', 'InscripcionController');
 
 
-    Route::group(['middleware' => 'roles'], function(){
+    Route::group(['middleware' => 'administrador'], function(){
     //////////////////// Admnistración /////////////////////////////////////////
 
     # Cargos
