@@ -12,7 +12,7 @@ class CargoController extends Controller
     public function index()
     {
         $cargos = Cargo::all();
-
+        
         return view("cargo.index")->with("cargos", $cargos);
     }
 
