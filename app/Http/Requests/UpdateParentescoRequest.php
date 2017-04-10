@@ -3,9 +3,9 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use App\Models\Rol;
+use App\Models\Parentesco;
 
-class UpdateRolRequest extends CreateRolRequest
+class UpdateParentescoRequest extends CreateParentescoRequest
 {
     /**
      * @override
@@ -15,7 +15,7 @@ class UpdateRolRequest extends CreateRolRequest
     public function rules()
     {
         return [
-            "nombre" => "required|unique:roles,nombre,".$this->rol->id.","."id",
+            "nombre" => "required|unique:parentescos,nombre,".$this->parentesco->id.","."id",
         ];
     }
 }

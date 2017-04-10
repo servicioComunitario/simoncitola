@@ -44,7 +44,7 @@ Route::group(['middleware' => 'auth'], function(){
 
 
 
-    //////////////////// Admnistracion /////////////////////////////////////////
+    //////////////////// Admnistración /////////////////////////////////////////
     # Cargos
     Route::resource('cargos', 'CargoController');
  
@@ -53,4 +53,10 @@ Route::group(['middleware' => 'auth'], function(){
 
     # Motivos
     Route::resource('motivos', 'MotivoController');
+
+    # Parentescos
+    Route::resource('parentescos', 'ParentescoController');
+
+    # Roles
+    #Route::resource('roles', 'RolController');
 });

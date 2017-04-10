@@ -109,8 +109,8 @@
                       <li><a href={{ route('cargos.index') }}>Cargos</a></li>
                       <li><a href={{ route('estados.index') }}>Estados</a></li>
                       <li><a href={{ route('motivos.index') }}>Motivos</a></li>
-                      <li><a href="page_500.html">500 Error</a></li>
-                      <li><a href="plain_page.html">Plain Page</a></li>
+                      <li><a href={{ route('parentescos.index') }}>Parentescos</a></li>
+                      {{-- <li><a href={{ route('roles.index') }}>Parentescos</a></li> --}}
                       <li><a href="login.html">Login Page</a></li>
                       <li><a href="pricing_tables.html">Pricing Tables</a></li>
                     </ul>
