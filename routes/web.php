@@ -50,4 +50,7 @@ Route::group(['middleware' => 'auth'], function(){
  
     # Estados
     Route::resource('estados', 'EstadoController');
+
+    # Motivos
+    Route::resource('motivos', 'MotivoController');
 });

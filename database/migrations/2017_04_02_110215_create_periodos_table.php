@@ -17,7 +17,7 @@ class CreatePeriodosTable extends Migration
             $table->increments('id');
             $table->date('inicio');
             $table->date('fin');
-            $table->string('titulo', 20)->unique();
+            $table->string('nombre', 20)->unique();
             $table->timestamps();
         });
     }

@@ -104,11 +104,11 @@
                       <li><a href="tables_dynamic.html">Table Dynamic</a></li>
                     </ul>
                   </li>
-                  <li><a><i class="fa fa-windows"></i>Administracion<span class="fa fa-chevron-down"></span></a>
+                  <li><a><i class="fa fa-cog fa-spin1 fa-fw"></i> Administración <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href={{ route('cargos.index') }}>Cargos</a></li>
                       <li><a href={{ route('estados.index') }}>Estados</a></li>
-                      <li><a href="page_404.html">404 Error</a></li>
+                      <li><a href={{ route('motivos.index') }}>Motivos</a></li>
                       <li><a href="page_500.html">500 Error</a></li>
                       <li><a href="plain_page.html">Plain Page</a></li>
                       <li><a href="login.html">Login Page</a></li>

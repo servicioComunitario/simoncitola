@@ -27,10 +27,12 @@ class CargoController extends Controller
     public function store(CreateCargoRequest $request)
     {
         try{
-            $cargo = Cargo::create($request->only(
-                'nombre',
-                'nivel'
-            ));
+            $cargo = Cargo::create(
+                $request->only(
+                    'nombre',
+                    'nivel'
+                )
+            );
 
             session()->flash('msg_success', "El cargo '$cargo->nombre' ha sido creado.");
         } catch (Exception $e) {
