@@ -19,7 +19,7 @@ class DiaLaborable extends Model{
     return $this->hasMany(AsistenciaAlumno::class);
   }
 
-  public function asistenciAlumnos(){
+  public function asistenciaEmpleados(){
     return $this->hasMany(AsistenciaEmpleado::class);
   }
 

@@ -63,4 +63,7 @@ Route::group(['middleware' => 'auth'], function(){
     Route::resource('roles', 'RolController');
     });
 
+    //////////////////// Dias Laborables////////////////
+    Route::get('diaLaborable','DiaLaborableController@index');
+
 });
