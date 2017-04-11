@@ -325,6 +325,6 @@
     <script src={{ URL::asset('js/custom.min.js') }}></script>
     
     {{-- Scripts personalizados --}}
-    @yield("scripts")
+    @yield("js")
   </body>
 </html>
