@@ -1,77 +1,53 @@
 function setDiaNoLaborable(celdaDia) {
-	celdaDia.removeClass('txt-info');
-	celdaDia.removeClass('bg-info');
-	celdaDia.removeClass('txt-success');
-	celdaDia.removeClass('bg-success ');
 
-	celdaDia.addClass('text-danger');
-	celdaDia.addClass('bg-danger');
+	if(celdaDia.hasClass('finSemana')){
+		celdaDia.removeClass('escolarFinSemana administrativoFinSemana');
+	}else{
+		celdaDia.removeClass('administrativo ');
+		celdaDia.addClass('noLaborable');
+	}
+
 	celdaDia.attr('tipo', '0'); 
 }
 
 function setDiaAdministrativo(celdaDia) {
-	celdaDia.removeClass('txt-danger');
-	celdaDia.removeClass('bg-danger');
-	celdaDia.removeClass('txt-success');
-	celdaDia.removeClass('bg-success');
 
-	celdaDia.addClass('text-info');
-	celdaDia.addClass('bg-info');
+	if(celdaDia.hasClass('finSemana')){
+		celdaDia.removeClass('noLaborableFinSemana escolarFinSemana');
+		celdaDia.addClass('administrativoFinSemana');
+	}else{
+		celdaDia.removeClass('noLaborable');
+		celdaDia.addClass('administrativo');
+	}
+
 	celdaDia.attr('tipo', '1'); 
 }
 
 function setDiaEscolar(celdaDia) {
-	celdaDia.removeClass('txt-danger');
-	celdaDia.removeClass('bg-danger');
-	celdaDia.removeClass('txt-danger');
-	celdaDia.removeClass(' bg-danger');
 
-	celdaDia.addClass('text-success');
-	celdaDia.addClass('bg-success');
+	if(celdaDia.hasClass('finSemana')){
+		celdaDia.removeClass('administrativoFinSemana noLaborableFinSemana');
+		celdaDia.addClass('escolarFinSemana');
+	}else{
+		celdaDia.removeClass('administrativo noLaborable');
+		celdaDia.addClass('escolar');
+	}
+
 	celdaDia.attr('tipo', '2'); 
 }
 
-function cargarDias(){
-	diaLaborables = JSON.parse(diaLaborables);
-
-	//console.log(diaLaborables[0]);
-
-	$.each(diaLaborables, function(i, obj) {
-
-		var celdaDia    = $("table[mes='"+obj.mes+"'] tr[semana='"+obj.semanaMes+"'] td[posicion="+obj.diaSemana+"]");
-		var celdaSemana = celdaDia.parent().find('td:first');
-		
-		celdaDia.text(obj.dia);
-		celdaDia.addClass('valido');
-
-		obj.tipo = Math.floor(Math.random() * 3);
-
-		//console.log(obj.tipo);
-
-		if(obj.finSemana || !obj.tipo){ //fin de semana o dia no laborable
-			setDiaNoLaborable(celdaDia);
-		}
-
-		if(obj.tipo==1){ // dia administrativo
-			setDiaAdministrativo(celdaDia);
-		}else{
-			if(obj.tipo==2){ //dia académico
-				setDiaEscolar(celdaDia);
-			}
-		}
-
-		//celdaSemana.text(obj.semanaMes);
-
-		//console.log(celdaDia.parent().find('td:first'));
-		//celdaSemana.text(obj.semanaMes);
-
-	});
+function setFinSemana(celdaDia) {
+	celdaDia.addClass('finSemana');
 }
 
-function cambiarEstado(celdaDia) {
+function cambiarEstado(celdaDia, aumenta) {
 	var tipo = celdaDia.attr('tipo');
 
-	tipo = (tipo+1)%3;
+	tipo = (tipo+aumenta)%3;
+
+	if(celdaDia.finSemana){
+		setFinSemana(celdaDia);
+	}
 
 	switch(tipo){
 		case 0:{
@@ -86,11 +62,54 @@ function cambiarEstado(celdaDia) {
 	}
 }
 
+function cargarDias(){
+
+	calendarioLaboral = JSON.parse(calendarioLaboral);
+	
+	var obj;
+	var celdaDia;
+	var celdaSemana;
+	var semanaAnio = -1;
+	for (var i = 0; i < calendarioLaboral.length; i++) {
+		obj = calendarioLaboral[i];
+
+		celdaDia = $("table[mes='"+obj.mes+"'] tr[semana='"+obj.semanaMes+"'] td[posicion="+obj.diaSemana+"]");
+		
+		//obj.tipo = Math.floor(Math.random() * 3);
+		//obj.tipo = 2;
+
+		celdaDia.text(obj.dia);
+		celdaDia.addClass('valido');
+
+		if(obj.finSemana){
+			celdaDia.addClass('finSemana');
+			celdaDia.attr('tipo', 0);
+		}else{
+			celdaDia.attr('tipo', 2);
+		}
+
+		cambiarEstado(celdaDia); 
+
+		if(semanaAnio!=obj.semanaMes){
+			semanaAnio = obj.semanaMes;
+			celdaSemana = celdaDia.parent().find('td:first');
+			celdaSemana.text(obj.semanaMes);
+			celdaSemana.addClass('numSemana');
+
+			if(obj.semanaMes==5){
+				celdaSemana.parent().removeAttr('hidden');
+			}
+		}
+	}
+}
+
+
+
 
 $(document).ready(function() {
 	cargarDias();
 	
 	$("td.valido").click(function(){
-		cambiarEstado($(this));
+		cambiarEstado($(this), 1);
 	});
 });

@@ -84,7 +84,7 @@
 	    		                        <td posicion="6"></td>
 	    		                        <td posicion="7"></td>
 	    		                    </tr>
-	    		                    <tr class="semana" semana="5">
+	    		                    <tr class="semana" semana="5" hidden>
 	    		                        <td posicion="0"></td>
 	    		                        <td posicion="1"></td>
 	    		                        <td posicion="2"></td>
@@ -163,7 +163,7 @@
 	    		                        <td posicion="6"></td>
 	    		                        <td posicion="7"></td>
 	    		                    </tr>
-	    		                    <tr class="semana" semana="5">
+	    		                    <tr class="semana" semana="5" hidden>
 	    		                        <td posicion="0"></td>
 	    		                        <td posicion="1"></td>
 	    		                        <td posicion="2"></td>
@@ -242,7 +242,7 @@
 	    		                        <td posicion="6"></td>
 	    		                        <td posicion="7"></td>
 	    		                    </tr>
-	    		                    <tr class="semana" semana="5">
+	    		                    <tr class="semana" semana="5" hidden>
 	    		                        <td posicion="0"></td>
 	    		                        <td posicion="1"></td>
 	    		                        <td posicion="2"></td>
@@ -321,7 +321,7 @@
 	    		                        <td posicion="6"></td>
 	    		                        <td posicion="7"></td>
 	    		                    </tr>
-	    		                    <tr class="semana" semana="5">
+	    		                    <tr class="semana" semana="5" hidden>
 	    		                        <td posicion="0"></td>
 	    		                        <td posicion="1"></td>
 	    		                        <td posicion="2"></td>
@@ -400,7 +400,7 @@
 	    		                        <td posicion="6"></td>
 	    		                        <td posicion="7"></td>
 	    		                    </tr>
-	    		                    <tr class="semana" semana="5">
+	    		                    <tr class="semana" semana="5" hidden>
 	    		                        <td posicion="0"></td>
 	    		                        <td posicion="1"></td>
 	    		                        <td posicion="2"></td>
@@ -479,7 +479,7 @@
 	    		                        <td posicion="6"></td>
 	    		                        <td posicion="7"></td>
 	    		                    </tr>
-	    		                    <tr class="semana" semana="5">
+	    		                    <tr class="semana" semana="5" hidden>
 	    		                        <td posicion="0"></td>
 	    		                        <td posicion="1"></td>
 	    		                        <td posicion="2"></td>
@@ -558,7 +558,7 @@
 	    		                        <td posicion="6"></td>
 	    		                        <td posicion="7"></td>
 	    		                    </tr>
-	    		                    <tr class="semana" semana="5">
+	    		                    <tr class="semana" semana="5" hidden>
 	    		                        <td posicion="0"></td>
 	    		                        <td posicion="1"></td>
 	    		                        <td posicion="2"></td>
@@ -637,7 +637,7 @@
 	    		                        <td posicion="6"></td>
 	    		                        <td posicion="7"></td>
 	    		                    </tr>
-	    		                    <tr class="semana" semana="5">
+	    		                    <tr class="semana" semana="5" hidden>
 	    		                        <td posicion="0"></td>
 	    		                        <td posicion="1"></td>
 	    		                        <td posicion="2"></td>
@@ -716,7 +716,7 @@
 	    		                        <td posicion="6"></td>
 	    		                        <td posicion="7"></td>
 	    		                    </tr>
-	    		                    <tr class="semana" semana="5">
+	    		                    <tr class="semana" semana="5" hidden>
 	    		                        <td posicion="0"></td>
 	    		                        <td posicion="1"></td>
 	    		                        <td posicion="2"></td>
@@ -795,7 +795,7 @@
 	    		                        <td posicion="6"></td>
 	    		                        <td posicion="7"></td>
 	    		                    </tr>
-	    		                    <tr class="semana" semana="5">
+	    		                    <tr class="semana" semana="5" hidden>
 	    		                        <td posicion="0"></td>
 	    		                        <td posicion="1"></td>
 	    		                        <td posicion="2"></td>
@@ -874,7 +874,7 @@
 	    		                        <td posicion="6"></td>
 	    		                        <td posicion="7"></td>
 	    		                    </tr>
-	    		                    <tr class="semana" semana="5">
+	    		                    <tr class="semana" semana="5" hidden>
 	    		                        <td posicion="0"></td>
 	    		                        <td posicion="1"></td>
 	    		                        <td posicion="2"></td>
@@ -953,7 +953,7 @@
 	    		                        <td posicion="6"></td>
 	    		                        <td posicion="7"></td>
 	    		                    </tr>
-	    		                    <tr class="semana" semana="5">
+	    		                    <tr class="semana" semana="5" hidden>
 	    		                        <td posicion="0"></td>
 	    		                        <td posicion="1"></td>
 	    		                        <td posicion="2"></td>
@@ -975,6 +975,6 @@
 @endsection
 
 @section('js')
-	<script type="text/javascript">var diaLaborables = '{!! $diaLaborables !!}';</script>
+	<script type="text/javascript">var calendarioLaboral = '{!! $diaLaborables !!}';</script>
 	<script type="text/javascript" src={{ URL::asset('js/diaLaborable/acciones.js') }}></script>
 @endsection
