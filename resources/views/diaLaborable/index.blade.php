@@ -899,7 +899,7 @@
 	    		            <div class="clearfix"></div>
 	    		        </div>
 	    		        <div class="x_content">
-	    		            <table class="table table-bordered" id="tblDiciembre" mes="3">
+	    		            <table class="table table-bordered" id="tblDiciembre" mes="12">
 	    		                <thead>
 	    		                    <tr>
 	    		                        <th>S</th>

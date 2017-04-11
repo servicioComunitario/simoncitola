@@ -26,7 +26,7 @@ class DiaLaborableController extends Controller
 				$diaDeSemana = $dia->dayOfWeek;
 			}
 
-			$range[] = ['dia'=> date('j', $start), 'mes' => date('n', $start), 'anio' => date('Y', $start),'fecha' => date('Y-m-d', $start) , 'semanaMes' => $dia->weekOfMonth, 'finSemana' => $finDeSemana, "diaSemana" => $diaDeSemana, 'estado' => 0];
+			$range[] = ['dia'=> date('j', $start), 'mes' => date('n', $start), 'anio' => date('Y', $start),'fecha' => date('Y-m-d', $start) , 'semanaMes' => $dia->weekOfMonth, 'finSemana' => $finDeSemana, "diaSemana" => $diaDeSemana, 'tipo' => 0];
 			//dd($range[$i]->weekOfMonth);
 			//['dia'=> date('d', $start), 'mes' => date('m', $start), 'anio' => date('Y', $start)];
 			//date('Y-m-d', $start);
