@@ -26,7 +26,7 @@ class DiaLaborableController extends Controller
 				$diaDeSemana = $dia->dayOfWeek;
 			}
 
-			$range[] = ['dia'=> date('j', $start), 'mes' => date('n', $start), 'anio' => date('Y', $start),'fecha' => date('Y-m-d', $start) , 'semanaDelMes' => $dia->weekOfMonth, 'finDeSemana' => $finDeSemana, "diaDeSemana" => $diaDeSemana, 'estado' => 0];
+			$range[] = ['dia'=> date('j', $start), 'mes' => date('n', $start), 'anio' => date('Y', $start),'fecha' => date('Y-m-d', $start) , 'semanaMes' => $dia->weekOfMonth, 'finSemana' => $finDeSemana, "diaSemana" => $diaDeSemana, 'estado' => 0];
 			//dd($range[$i]->weekOfMonth);
 			//['dia'=> date('d', $start), 'mes' => date('m', $start), 'anio' => date('Y', $start)];
 			//date('Y-m-d', $start);
@@ -45,10 +45,14 @@ class DiaLaborableController extends Controller
 		$inicio = Carbon::parse('first day of January'.$año)->format('d-m-Y');
 		//dd($inicio);
 		$fin = Carbon::parse('last day of December'.$año)->format('d-m-Y');
+		
 		$todosLosDias=$this->fechas($inicio,$fin);
-		//dd($todosLosDias);
- 		/*return view('diaLaborable.index');*/
- 		return response()->json($todosLosDias);
 
+		$todosLosDias = json_encode($todosLosDias);
+
+		//dd($todosLosDias);
+		
+ 		//exit($todosLosDias);
+ 		return view('diaLaborable.index')->with('diaLaborables', $todosLosDias);
     }
 }

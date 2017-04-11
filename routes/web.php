@@ -38,32 +38,33 @@ Route::get('/', function () {
 Route::get('prueba/{value?}', 'PruebaController@singularSpanol');
 
 Route::group(['middleware' => 'auth'], function(){
+
     Route::name('home_path')->get('/home', 'HomeController@index');
 
     ////////////// Ruta alumnos ///////////////////////////////////
     Route::resource('inscripciones', 'InscripcionController');
 
-
+    ############################## Admin #######################################
     Route::group(['middleware' => 'administrador'], function(){
-    //////////////////// Admnistración /////////////////////////////////////////
 
-    # Cargos
-    Route::resource('cargos', 'CargoController');
- 
-    # Estados
-    Route::resource('estados', 'EstadoController');
+        //////////////////// Admnistración /////////////////////////////////////
 
-    # Motivos
-    Route::resource('motivos', 'MotivoController');
+        # Cargos
+        Route::resource('cargos', 'CargoController');
+     
+        # Estados
+        Route::resource('estados', 'EstadoController');
 
-    # Parentescos
-    Route::resource('parentescos', 'ParentescoController');
+        # Motivos
+        Route::resource('motivos', 'MotivoController');
 
-    # Roles
-    Route::resource('roles', 'RolController');
+        # Parentescos
+        Route::resource('parentescos', 'ParentescoController');
+
+        # Roles
+        Route::resource('roles', 'RolController');
+
+        //////////////////// Dias Laborables////////////////
+        Route::get('diaLaborables','DiaLaborableController@index');
     });
-
-    //////////////////// Dias Laborables////////////////
-    Route::get('diaLaborable','DiaLaborableController@index');
-
 });
