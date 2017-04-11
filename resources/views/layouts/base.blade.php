@@ -31,6 +31,9 @@
 	<!-- Custom Theme Style -->
 	<link href={{ URL::asset('css/custom.min.css') }} rel="stylesheet">
 
+  {{-- Css personalizados --}}
+  @yield("css")
+
 
 </head>
   <body class="nav-md" style="background-color: #2A3F54">
@@ -318,8 +321,10 @@
     <script src={{ URL::asset('table/datatables.net-scroller/js/dataTables.scroller.min.js') }}></script>
     <script src={{ URL::asset('table/jszip/dist/jszip.min.js') }}></script>
 
-
     <!-- Custom Theme Scripts -->
     <script src={{ URL::asset('js/custom.min.js') }}></script>
+    
+    {{-- Scripts personalizados --}}
+    @yield("scripts")
   </body>
 </html>
