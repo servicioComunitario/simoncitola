@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateCargoRequest extends CreateCargoRequest
+class UpdateRolRequest extends CreateRolRequest
 {
     /**
      * @override
@@ -14,8 +14,7 @@ class UpdateCargoRequest extends CreateCargoRequest
     public function rules()
     {
         return [
-            "nombre" => "required|unique:cargos,nombre,".$this->cargo->id.","."id",
-            'nivel'  => 'required|integer|min:0'
+            "nombre" => "required|unique:roles,nombre,".$this->estado->id.","."id",
         ];
     }
 }

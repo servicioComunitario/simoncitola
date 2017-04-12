@@ -17,28 +17,15 @@ Route::name('users_path')->get('/', function () {
     return redirect('/login');
 });
 
-
 Route::get('prueba', function(){
 	return view('prueba');
 });
-/*
-Route::get('/', function () {
-    return view('welcome');
-});
-*/
 
-// Route::get('/', ;});
-
-// Route::name('create_alumno_path')->get('/alumno/create','AlumnoController@create');
-// Route::name('store_alumno_path')->get('/alumnos','AlumnoController@store');
-// Route::name('alumno_path')->get('/alumno/{alumno}','AlumnoController@show');
-// Route::name('edit_alumno_path')->get('/alumno/{alumno}/edit','AlumnoController@edit');
-// Route::name('update_alumno_path')->get('/alumno/{alumno}/','AlumnoController@update');
-
+Route::get('prueba/{value?}', 'PruebaController@singularSpanol');
 
 Route::group(['middleware' => 'auth'], function(){
-  Route::name('home_path')->get('/home', 'HomeController@index');
 
+  ////////////// Ruta inscripciones ///////////////////////////////////
   Route::resource('inscripciones', 'InscripcionController');
 
   ////////////// Ruta alumnos ///////////////////////////////////
@@ -51,5 +38,32 @@ Route::group(['middleware' => 'auth'], function(){
   # Cargos
   Route::resource('cargos', 'CargoController');
   Route::name("cargos.show")->get('cargos/{id}/{eliminar}', "CargoController@show");
+
+
+  Route::name('home_path')->get('/home', 'HomeController@index');
+
+  ############################## Admin #######################################
+  Route::group(['middleware' => 'administrador'], function(){
+
+      //////////////////// Admnistración /////////////////////////////////////
+
+      # Cargos
+      Route::resource('cargos', 'CargoController');
+   
+      # Estados
+      Route::resource('estados', 'EstadoController');
+
+      # Motivos
+      Route::resource('motivos', 'MotivoController');
+
+      # Parentescos
+      Route::resource('parentescos', 'ParentescoController');
+
+      # Roles
+      Route::resource('roles', 'RolController');
+
+      //////////////////// Dias Laborables////////////////
+      Route::get('diaLaborables','DiaLaborableController@index');
+  });
 
 });

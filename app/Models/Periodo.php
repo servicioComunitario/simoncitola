@@ -9,7 +9,7 @@ class Periodo extends Model{
 	protected $fillable = [
 		'inicio',
 		'fin',
-		'titulo'
+		'nombre'
 	];
 
 	public function secciones(){

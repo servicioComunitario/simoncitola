@@ -31,6 +31,9 @@
 	<!-- Custom Theme Style -->
 	<link href={{ URL::asset('css/custom.min.css') }} rel="stylesheet">
 
+  {{-- Css personalizados --}}
+  @yield("css")
+
 
 </head>
   <body class="nav-md" style="background-color: #2A3F54">
@@ -104,13 +107,13 @@
                       <li><a href="tables_dynamic.html">Table Dynamic</a></li>
                     </ul>
                   </li>
-                  <li><a><i class="fa fa-windows"></i>Administracion<span class="fa fa-chevron-down"></span></a>
+                  <li><a><i class="fa fa-gears fa-spin1 fa-fw"></i> Administración <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href={{ route('cargos.index') }}>Cargos</a></li>
-                      <li><a href="page_403.html">403 Error</a></li>
-                      <li><a href="page_404.html">404 Error</a></li>
-                      <li><a href="page_500.html">500 Error</a></li>
-                      <li><a href="plain_page.html">Plain Page</a></li>
+                      <li><a href={{ route('estados.index') }}>Estados</a></li>
+                      <li><a href={{ route('motivos.index') }}>Motivos</a></li>
+                      <li><a href={{ route('parentescos.index') }}>Parentescos</a></li>
+                      <li><a href={{ route('roles.index') }}>Roles</a></li>
                       <li><a href="login.html">Login Page</a></li>
                       <li><a href="pricing_tables.html">Pricing Tables</a></li>
                     </ul>
@@ -273,7 +276,7 @@
             </div>
           </div>
         </div> --}}
-        <div class="right_col" role="main" >
+        <div class="right_col" role="main" style="min-height: initial;">
           {{-- <div class="container-fluid"> --}}
             @include('layouts._messages')
             @yield("contenido")
@@ -318,8 +321,10 @@
     <script src={{ URL::asset('table/datatables.net-scroller/js/dataTables.scroller.min.js') }}></script>
     <script src={{ URL::asset('table/jszip/dist/jszip.min.js') }}></script>
 
-
     <!-- Custom Theme Scripts -->
     <script src={{ URL::asset('js/custom.min.js') }}></script>
+    
+    {{-- Scripts personalizados --}}
+    @yield("js")
   </body>
 </html>
