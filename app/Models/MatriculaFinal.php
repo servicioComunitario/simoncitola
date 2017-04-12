@@ -12,8 +12,8 @@ class MatriculaFinal extends Model{
 		'observacion'
 	];
 
-	public function diaLaborable(){
-		return $this->belongsTo(DiaLaborable::class);
+	public function dia(){
+		return $this->belongsTo(Dia::class);
 	}
 
 	public function seccion(){

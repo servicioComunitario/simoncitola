@@ -16,7 +16,7 @@ class Parentesco extends Model{
 		'nombre'
 	];
 
-	public function representantes(){
-		return $this->hasMany(Representante::class);
+	public function inscripcion(){
+		return $this->hasMany(Inscripcion::class);
 	}
 }

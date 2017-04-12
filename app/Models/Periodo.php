@@ -16,8 +16,8 @@ class Periodo extends Model{
 		return $this->hasMany(Seccion::class);
 	}
 
-	public function diaLaborables(){
-		return $this->hasMany(DiaLaborable::class);
+	public function dias(){
+		return $this->hasMany(Dia::class);
 	}
 
 }

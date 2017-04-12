@@ -10,7 +10,7 @@ class Aplazado extends Model
 	protected $fillable = [
 		'inscripcion_id',
 		'motivo_id',
-		'dia_laborable_id',
+		'dia_id',
 		'motivo'
 	];
 
@@ -20,5 +20,10 @@ class Aplazado extends Model
 
 	public function motivo(){
     return $this->belongsTo(Motivo::class);
+  }
+
+  public function dia()
+  {
+  	return $this->belongsTo(Dia::class);
   }
 }

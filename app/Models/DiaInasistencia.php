@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class DiaInasistencia extends Model{
   
   public function actasInasistencias(){
-    return $this->belongsToMany('App\Models\ActaInasistencia');
+    return $this->belongsToMany(ActaInasistencia::class);
   }
 }

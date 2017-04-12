@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Guardia extends Model{
 
 	protected $fillable = [
-		'dia_laborable_id',
+		'dia_id',
 		'empleado_id'
 	];
 
@@ -19,7 +19,7 @@ class Guardia extends Model{
     return $this->belongsTo(Empleado::class);
   }
 
-  public function diaLaborable(){
-  	return $this->belongsTo(DiaLaborable::class);
+  public function dia(){
+  	return $this->belongsTo(Dia::class);
   }
 }

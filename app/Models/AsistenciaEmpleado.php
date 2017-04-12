@@ -8,7 +8,7 @@ class AsistenciaEmpleado extends Model{
 
 
 	protected $fillable = [
-		'dia_laborable_id',
+		'dia_id',
 		'empleado_id',
 		'hora_entrada',
 		'hora_salida',
@@ -18,8 +18,8 @@ class AsistenciaEmpleado extends Model{
 		'justificacion'
 	];
 
-	public function diaLaborable(){
-		return $this->belongsTo(DiaLaborable::class);
+	public function dia(){
+		return $this->belongsTo(Dia::class);
 	}
 
 	public function empleado(){

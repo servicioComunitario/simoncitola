@@ -23,6 +23,14 @@ class Alumno extends Model
     return $this->belongsTo(Estado::class);
   }
 
+  public function padre(){
+    return $this->belongsTo(Representante::class, 'padre_id', 'id');
+  }
+
+  public function madre(){
+    return $this->belongsTo(Representante::class, 'madre_id', 'id');
+  }
+
   public function asistenciaAlumnos(){
     return $this->hasMany(AsistenciaAlumno::class);
   }

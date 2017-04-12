@@ -10,7 +10,7 @@ class Suplencia extends Model{
 		'empleado_suplente_id',
 		'empleado_suplantado_id',
 		'observacion',
-		'dia_laborable_id'
+		'dia_id'
 	];
 
 		public function empleadoSuplente(){
@@ -19,6 +19,11 @@ class Suplencia extends Model{
 
 	  public function empleadoSuplantado(){
 	    return $this->belongsTo(Empleado::class, 'id', 'empleado_suplantado_id' );
+	  }
+
+	  public function dia()
+	  {
+	  	return $this->belongsTo(Dia::class);
 	  }
 
 }

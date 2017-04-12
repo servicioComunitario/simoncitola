@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
 
-class Dias extends Model{
+class Dia extends Model{
 
   protected $table = 'dias';
 
@@ -16,6 +16,10 @@ class Dias extends Model{
 
 	public function actaInasistencias(){
         return $this->belongsToMany(ActaInasistencia::class);
+    }
+
+    public function aplazados(){
+        return $this->hasMany(ActaInasistencia::class);
     }
 
     public function asistenciAlumnos(){
@@ -42,6 +46,10 @@ class Dias extends Model{
 
     public function periodo(){
         return $this->belongsTo(Periodo::class);
+    }
+
+    public function suplencias(){
+        return $this->hasMany(Suplencia::class);
     }
 
     public static function getSemanaMes($fecha = null) {

@@ -8,7 +8,7 @@ class ActaInasistencia extends Model
 {
 
 	protected $fillable = [
-		'dia_laborable_id',
+		'dia_id',
 		'empleado_id',
 		'fecha_justificacion',
 		'fecha_no_justificacion'
@@ -18,7 +18,7 @@ class ActaInasistencia extends Model
     return $this->belongsTo(Empleado::class);
 	}
 
-	public function diaLaborables(){
-    return $this->belongsToMany(DiaLaboral::class);
+	public function dias(){
+    return $this->belongsToMany(Dia::class);
   }
 }

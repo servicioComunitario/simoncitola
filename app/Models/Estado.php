@@ -14,7 +14,6 @@ class Estado extends Model{
 		'nombre'
 	];
 
-
 	public function alumnos(){
   	return $this->hasMany(Alumno::class);
   }

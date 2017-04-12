@@ -32,9 +32,5 @@ class Representante extends Model
 		return $this->hasMany(Inscripcion::class, 'responsable_id', 'id' );
 	}
 
-	public function parentesco(){
-		return $this->belongsTo(Parentesco::class);
-	}
-
-
+	
 }

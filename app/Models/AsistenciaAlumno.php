@@ -8,7 +8,7 @@ class AsistenciaAlumno extends Model
 {
 	protected $fillable = [
 		'alumno_id',
-		'dia_laborable_id',
+		'dia_id',
 		'presente'
 	];
 
@@ -16,7 +16,7 @@ class AsistenciaAlumno extends Model
     return $this->belongsTo(Alumno::class);
 	}
 
-	public function diaLaborable(){
-		return $this->belongsTo(DiaLaborable::class);
+	public function dia(){
+		return $this->belongsTo(Dia::class);
 	}
 }
