@@ -17,7 +17,7 @@ class CargoController extends Controller
         return view("cargo.index")->with("cargos", $cargos);
     }
 
-    
+
 
     public function create()
     {
@@ -74,7 +74,7 @@ class CargoController extends Controller
         try {
 
             $cargo = Cargo::find($request->id);
-            
+
             $cargo->delete();
 
             session()->flash('msg_danger', "El cargo '$cargo->nombre' ha sido eliminado.");

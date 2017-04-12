@@ -6,6 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Estado extends Model{
 
+	public static $ACTIVO = 1;
+	public static $SUSPENDIDO = 2;
+	public static $RETIRADO = 3;
+
 	protected $fillable = [
 		'nombre'
 	];

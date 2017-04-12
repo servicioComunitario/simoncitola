@@ -8,6 +8,7 @@ class Inscripcion extends Model
 {
 
 	protected $fillable = [
+		'empleado_id',
 		'alumno_id',
 		'seccion_id',
 		'representante_padre_id',
@@ -35,10 +36,6 @@ class Inscripcion extends Model
   public function diaLaborable(){
 		return $this->belongsTo(DiaLaborable::class);
 	}
-
-	public function responsable(){
-  	return $this->belongsTo(Empleado::class);
-  }
 
   public function padre(){
   	return $this->belongsTo(Representante::class, 'representante_padre_id', 'id');

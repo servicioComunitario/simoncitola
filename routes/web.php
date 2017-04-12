@@ -39,18 +39,17 @@ Route::get('/', function () {
 Route::group(['middleware' => 'auth'], function(){
   Route::name('home_path')->get('/home', 'HomeController@index');
 
-  ////////////// Ruta alumnos ///////////////////////////////////
   Route::resource('inscripciones', 'InscripcionController');
 
+  ////////////// Ruta alumnos ///////////////////////////////////
+  Route::resource('alumnos', 'AlumnoController');
 
+  ////////////// Ruta representantes ///////////////////////////////////
+  Route::resource('representantes', 'RepresentanteController');
 
   //////////////////// Admnistracion /////////////////////////////////////////
-  
   # Cargos
   Route::resource('cargos', 'CargoController');
   Route::name("cargos.show")->get('cargos/{id}/{eliminar}', "CargoController@show");
-
-
-
 
 });

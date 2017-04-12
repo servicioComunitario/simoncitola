@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class DiaLaborable extends Model{
 
+  protected $table = 'dia_laborables';
+
 	protected $fillable = [
 		'periodo_id',
 		'academico'
@@ -19,7 +21,7 @@ class DiaLaborable extends Model{
     return $this->hasMany(AsistenciaAlumno::class);
   }
 
-  public function asistenciAlumnos(){
+  public function AsistenciaEmpleados(){
     return $this->hasMany(AsistenciaEmpleado::class);
   }
 
