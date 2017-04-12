@@ -17,6 +17,8 @@ class CreateAlumnosTable extends Migration
         Schema::create('alumnos', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('estado_id')->unsigned();
+            $table->integer('padre_id')->unsigned()->nullable();
+            $table->integer('madre_id')->unsigned()->nullable();
             $table->text('nombre');
             $table->text('nombre2')->nullable();
             $table->text('apellido');
@@ -30,6 +32,18 @@ class CreateAlumnosTable extends Migration
             $table->foreign('estado_id')
                 ->references('id')
                 ->on('estados')
+                ->onUpdate('cascade')
+                ->onDelete('restrict');
+
+            $table->foreign('padre_id')
+                ->references('id')
+                ->on('representantes')
+                ->onUpdate('cascade')
+                ->onDelete('restrict');
+
+            $table->foreign('madre_id')
+                ->references('id')
+                ->on('representantes')
                 ->onUpdate('cascade')
                 ->onDelete('restrict');
         });

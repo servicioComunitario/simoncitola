@@ -5,7 +5,7 @@
     <div class="col-md-12 col-sm-12 col-xs-12">
       <div class="x_panel">
         <div class="x_title">
-          <h2>Representantes</h2>
+          <h2>Padres y Representantes</h2>
           <ul class="nav navbar-right panel_toolbox">
               <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
           </ul>
@@ -18,8 +18,8 @@
                 <th>Nombres</th>
                 <th>Apellidos</th>
                 <th>Cédula</th>
-                <th>Edad</th>
-                <th>Seccion</th>
+                <th>Alumno</th>
+                <th>Parentesco</th>
                 <th style="width: 80px;" class="text-center"></th>
               </tr>
             </thead>
@@ -29,8 +29,17 @@
                 <td>{{ $representante->nombre." ".$representante->nombre2 }}</td>
                 <td>{{ $representante->apellido." ".$representante->apellido2 }}</td>
                 <td>{{ $representante->cedula }}</td>
-                <td>{{ $representante->fecha_nacimiento }}</td>
-                <td></td>
+                <td>
+                  @if(sizeof($representante->responsable))
+                    responsable
+                  @elseif(sizeof($representante->inscripcionPadre))
+                    padre
+                  @elseif(sizeof($representante->inscripcionMadre))
+                    madre
+                  @endif
+                  
+                </td>
+                <td>{{ $representante->parentesco->nombre }}</td>
                 <td class="text-center">
 
                   <a href={{ route('representantes.show', $representante->id) }} class="btn btn-success btn-xs" title="Editar">

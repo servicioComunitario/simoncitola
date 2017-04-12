@@ -17,9 +17,8 @@ class CreateInscripcionesTable extends Migration
             $table->increments('id');
             $table->integer('alumno_id')->unsigned();
             $table->integer('seccion_id')->unsigned();
-            $table->integer('representante_padre_id')->unsigned()->nullable();
-            $table->integer('representante_madre_id')->unsigned()->nullable();
             $table->integer('responsable_id')->unsigned();
+            $table->integer('parentesco_id')->unsigned();            
             $table->integer('empleado_id')->unsigned();
             $table->boolean('partida_nacimiento');
             $table->boolean('certificado_vacuna');
@@ -41,21 +40,15 @@ class CreateInscripcionesTable extends Migration
                 ->onUpdate('cascade')
                 ->onDelete('restrict');
 
-            $table->foreign('representante_padre_id')
-                ->references('id')
-                ->on('representantes')
-                ->onUpdate('cascade')
-                ->onDelete('restrict');
-
-            $table->foreign('representante_madre_id')
-                ->references('id')
-                ->on('representantes')
-                ->onUpdate('cascade')
-                ->onDelete('restrict');
-
             $table->foreign('responsable_id')
                 ->references('id')
                 ->on('representantes')
+                ->onUpdate('cascade')
+                ->onDelete('restrict');
+
+            $table->foreign('parentesco_id')
+                ->references('id')
+                ->on('parentescos')
                 ->onUpdate('cascade')
                 ->onDelete('restrict');
 

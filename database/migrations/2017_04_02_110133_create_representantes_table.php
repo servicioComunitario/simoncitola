@@ -15,7 +15,6 @@ class CreateRepresentantesTable extends Migration
     {
         Schema::create('representantes', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('parentesco_id')->unsigned();
             $table->text('nombre');
             $table->text('nombre2')->nullable();
             $table->text('apellido');
@@ -29,11 +28,6 @@ class CreateRepresentantesTable extends Migration
 
             $table->timestamps();
 
-            $table->foreign('parentesco_id')
-                ->references('id')
-                ->on('parentescos')
-                ->onUpdate('cascade')
-                ->onDelete('restrict');
         });
     }
 

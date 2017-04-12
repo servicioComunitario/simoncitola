@@ -60,8 +60,9 @@
               </div> --}}
 
               <div class="profile_info menu_section">
-                {{-- <span>Bienvenido,</span> --}}
-								<h3>@yield("nombreUsuario")</h3>
+                <h3>
+                  {{ Auth::user()->empleado->nombre }} {{ Auth::user()->empleado->apellido }}
+                </h3>
 							</div>
             </div>
             <!-- /menu profile quick info -->
@@ -80,7 +81,9 @@
                   </li>
                   <li><a><i class="fa fa-edit"></i> Inscripción <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href={{ route('inscripciones.create') }}>NUevo</a></li>
+                      <li><a href={{ route('inscripciones.create') }}>Nuevo</a></li>
+                      <li><a href={{ route('alumnos.index') }}>Alumnos</a></li>
+                      <li><a href={{ route('representantes.index') }}>Padres y Representantes</a></li>
                       <li><a href="form_advanced.html">Advanced Components</a></li>
                       <li><a href="form_validation.html">Form Validation</a></li>
                       <li><a href="form_wizards.html">Form Wizard</a></li>

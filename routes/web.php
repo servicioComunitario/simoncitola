@@ -37,8 +37,6 @@ Route::group(['middleware' => 'auth'], function(){
   //////////////////// Admnistracion /////////////////////////////////////////
   # Cargos
   Route::resource('cargos', 'CargoController');
-  Route::name("cargos.show")->get('cargos/{id}/{eliminar}', "CargoController@show");
-
 
   Route::name('home_path')->get('/home', 'HomeController@index');
 
