@@ -276,7 +276,7 @@
             </div>
           </div>
         </div> --}}
-        <div class="right_col" role="main" style="height: 1400px;">
+        <div class="right_col" role="main" style="min-height: initial;">
           {{-- <div class="container-fluid"> --}}
             @include('layouts._messages')
             @yield("contenido")

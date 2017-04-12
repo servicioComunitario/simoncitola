@@ -7,7 +7,7 @@ function setDiaNoLaborable(celdaDia) {
 		celdaDia.addClass('noLaborable');
 	}
 
-	celdaDia.attr('tipo', '0'); 
+	celdaDia.attr('tipo', '0');
 }
 
 function setDiaAdministrativo(celdaDia) {
@@ -64,20 +64,16 @@ function cambiarEstado(celdaDia, aumenta) {
 
 function cargarDias(){
 
-	calendarioLaboral = JSON.parse(calendarioLaboral);
-	
 	var obj;
 	var celdaDia;
 	var celdaSemana;
 	var semanaAnio = -1;
+	var mesAnio = 0;
 	for (var i = 0; i < calendarioLaboral.length; i++) {
 		obj = calendarioLaboral[i];
 
 		celdaDia = $("table[mes='"+obj.mes+"'] tr[semana='"+obj.semanaMes+"'] td[posicion="+obj.diaSemana+"]");
 		
-		//obj.tipo = Math.floor(Math.random() * 3);
-		//obj.tipo = 2;
-
 		celdaDia.text(obj.dia);
 		celdaDia.addClass('valido');
 
@@ -90,21 +86,20 @@ function cargarDias(){
 
 		cambiarEstado(celdaDia); 
 
-		if(semanaAnio!=obj.semanaMes){
-			semanaAnio = obj.semanaMes;
+		if(semanaAnio!=obj.semanaAnio || mesAnio!=obj.mes){
 			celdaSemana = celdaDia.parent().find('td:first');
-			celdaSemana.text(obj.semanaMes);
+			celdaSemana.text(obj.semanaAnio);
 			celdaSemana.addClass('numSemana');
 
-			if(obj.semanaMes==5){
+			if(obj.semanaMes==5 || obj.semanaMes==6){
 				celdaSemana.parent().removeAttr('hidden');
 			}
+
+			semanaAnio = obj.semanaAnio;
+			mesAnio = obj.mes;
 		}
 	}
 }
-
-
-
 
 $(document).ready(function() {
 	cargarDias();
