@@ -17,10 +17,10 @@ class CreateAplazadosTable extends Migration
             $table->increments('id');
             $table->integer('inscripcion_id')->unsigned();
             $table->integer('motivo_id')->unsigned();
-            $table->date('dia_laborable_id');
+            $table->date('dia_id');
             $table->text('motivo');
 
-            $table->index('dia_laborable_id');
+            $table->index('dia_id');
 
             $table->timestamps();
 
@@ -36,9 +36,9 @@ class CreateAplazadosTable extends Migration
                 ->onUpdate('cascade')
                 ->onDelete('restrict');
 
-            $table->foreign('dia_laborable_id')
+            $table->foreign('dia_id')
                 ->references('id')
-                ->on('dia_laborables')
+                ->on('dias')
                 ->onUpdate('cascade')
                 ->onDelete('restrict');
         });

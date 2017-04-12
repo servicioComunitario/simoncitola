@@ -16,10 +16,10 @@ class CreateMatriculaFinalesTable extends Migration
         Schema::create('matricula_finales', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('seccion_id')->unsigned();
-            $table->date('dia_laborable_id');
+            $table->date('dia_id');
             $table->text('observacion')->nullable();
 
-            $table->index('dia_laborable_id');
+            $table->index('dia_id');
 
             $table->timestamps();
 
@@ -29,9 +29,9 @@ class CreateMatriculaFinalesTable extends Migration
                 ->onUpdate('cascade')
                 ->onDelete('restrict');
 
-            $table->foreign('dia_laborable_id')
+            $table->foreign('dia_id')
                 ->references('id')
-                ->on('dia_laborables')
+                ->on('dias')
                 ->onUpdate('cascade')
                 ->onDelete('restrict');
 

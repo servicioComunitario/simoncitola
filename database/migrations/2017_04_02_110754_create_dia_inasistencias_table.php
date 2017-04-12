@@ -15,16 +15,16 @@ class CreateDiaInasistenciasTable extends Migration
     {
         Schema::create('dia_inasistencias', function (Blueprint $table) {
             $table->increments('id');
-            $table->date('dia_laborable_id');
+            $table->date('dia_id');
             $table->integer('acta_inasistencia_id')->unsigned();
 
-            $table->index('dia_laborable_id');
+            $table->index('dia_id');
 
             $table->timestamps();
 
-            $table->foreign('dia_laborable_id')
+            $table->foreign('dia_id')
                 ->references('id')
-                ->on('dia_laborables')
+                ->on('dias')
                 ->onUpdate('cascade')
                 ->onDelete('restrict');
 

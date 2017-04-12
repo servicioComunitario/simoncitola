@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDiaLaborablesTable extends Migration
+class CreateDiasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateDiaLaborablesTable extends Migration
      */
     public function up()
     {
-        Schema::create('dia_laborables', function (Blueprint $table) {
+        Schema::create('dias', function (Blueprint $table) {
             $table->date('id');
             $table->integer('periodo_id')->unsigned();
-            $table->boolean('academico');
+            $table->tinyInteger('tipo');
             $table->timestamps();
 
             $table->primary('id');
@@ -36,6 +36,6 @@ class CreateDiaLaborablesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('dia_laborables');
+        Schema::dropIfExists('dias');
     }
 }

@@ -15,18 +15,18 @@ class CreateActaInasistenciasTable extends Migration
     {
         Schema::create('acta_inasistencias', function (Blueprint $table) {
             $table->increments('id');
-            $table->date('dia_laborable_id');
+            $table->date('dia_id');
             $table->integer('empleado_id')->unsigned();
             $table->date('fecha_justificacion');
             $table->date('fecha_no_justificacion');
 
-            $table->index('dia_laborable_id');
+            $table->index('dia_id');
 
             $table->timestamps();
 
-            $table->foreign('dia_laborable_id')
+            $table->foreign('dia_id')
                 ->references('id')
-                ->on('dia_laborables')
+                ->on('dias')
                 ->onUpdate('cascade')
                 ->onDelete('restrict');
 

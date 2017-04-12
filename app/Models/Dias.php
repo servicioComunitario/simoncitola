@@ -5,9 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
 
-class DiaLaborable extends Model{
+class Dias extends Model{
 
-  protected $table = 'dia_laborables';
+  protected $table = 'dias';
 
 	protected $fillable = [
 		'periodo_id',

@@ -28,9 +28,9 @@ class CreateInscripcionesTable extends Migration
             $table->boolean('carta_residencia');
             $table->boolean('otros_ninios_inscritos');
             $table->boolean('colabora');
-            $table->date('dia_laborable_id');
+            $table->date('dia_id');
 
-            $table->index('dia_laborable_id');
+            $table->index('dia_id');
 
             $table->timestamps();
 
@@ -64,9 +64,9 @@ class CreateInscripcionesTable extends Migration
                 ->onUpdate('cascade')
                 ->onDelete('restrict');
 
-            $table->foreign('dia_laborable_id')
+            $table->foreign('dia_id')
                 ->references('id')
-                ->on('dia_laborables')
+                ->on('dias')
                 ->onUpdate('cascade')
                 ->onDelete('restrict');
         });
