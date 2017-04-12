@@ -116,8 +116,8 @@
                       <li><a href={{ route('estados.index') }}>Estados</a></li>
                       <li><a href={{ route('motivos.index') }}>Motivos</a></li>
                       <li><a href={{ route('parentescos.index') }}>Parentescos</a></li>
+                      <li><a href={{ route('periodos.index') }}>Periodos</a></li>
                       <li><a href={{ route('roles.index') }}>Roles</a></li>
-                      <li><a href="login.html">Login Page</a></li>
                       <li><a href="pricing_tables.html">Pricing Tables</a></li>
                     </ul>
                   </li>

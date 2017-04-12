@@ -25,43 +25,50 @@ Route::get('prueba/{value?}', 'PruebaController@singularSpanol');
 
 Route::group(['middleware' => 'auth'], function(){
 
-  ////////////// Ruta inscripciones ///////////////////////////////////
-  Route::resource('inscripciones', 'InscripcionController');
+    ############################################################################
+    #                             Inscripción                                  #
+    ############################################################################
 
-  ////////////// Ruta alumnos ///////////////////////////////////
-  Route::resource('alumnos', 'AlumnoController');
+    ////////////// Ruta inscripciones ///////////////////////////////////
+    Route::resource('inscripciones', 'InscripcionController');
 
-  ////////////// Ruta representantes ///////////////////////////////////
-  Route::resource('representantes', 'RepresentanteController');
+    ////////////// Ruta alumnos ///////////////////////////////////
+    Route::resource('alumnos', 'AlumnoController');
 
-  //////////////////// Admnistracion /////////////////////////////////////////
-  # Cargos
-  Route::resource('cargos', 'CargoController');
+    ////////////// Ruta representantes ///////////////////////////////////
+    Route::resource('representantes', 'RepresentanteController');
 
-  Route::name('home_path')->get('/home', 'HomeController@index');
+    Route::name('home_path')->get('/home', 'HomeController@index');
 
-  ############################## Admin #######################################
-  Route::group(['middleware' => 'administrador'], function(){
+    /****************************** Admin *************************************/
+    Route::group(['middleware' => 'administrador'], function(){
 
-      //////////////////// Admnistración /////////////////////////////////////
+        ########################################################################
+        #                           Admnistración                              #
+        ########################################################################
+        
+        # Cargos
+        Route::resource('cargos', 'CargoController');
 
-      # Cargos
-      Route::resource('cargos', 'CargoController');
-   
-      # Estados
-      Route::resource('estados', 'EstadoController');
+        # Estados
+        Route::resource('estados', 'EstadoController');
 
-      # Motivos
-      Route::resource('motivos', 'MotivoController');
+        # Motivos
+        Route::resource('motivos', 'MotivoController');
+        
+        # Periodos
+        Route::resource('periodos', 'PeriodoController');
 
-      # Parentescos
-      Route::resource('parentescos', 'ParentescoController');
+        # Parentescos
+        Route::resource('parentescos', 'ParentescoController');
 
-      # Roles
-      Route::resource('roles', 'RolController');
+        # Roles
+        Route::resource('roles', 'RolController');
 
-      //////////////////// Dias Laborables////////////////
-      Route::get('diaLaborables','DiaLaborableController@index');
-  });
+
+
+        //////////////////// Dias Laborables////////////////
+        //Route::get('diaLaborables','DiaLaborableController@index');
+    });
 
 });

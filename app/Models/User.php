@@ -8,7 +8,7 @@ use App\Models\Rol;
 
 class User extends Authenticatable
 {
-  protected $table = "users";
+  protected $table = "usuarios";
 
   use Notifiable;
 
