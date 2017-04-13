@@ -16,7 +16,7 @@ class CreateDiasTable extends Migration
         Schema::create('dias', function (Blueprint $table) {
             $table->date('id');
             $table->integer('periodo_id')->unsigned();
-            $table->tinyInteger('tipo');
+            $table->enum('tipo', ['libre', 'administrativo', 'escolar']);
             $table->timestamps();
 
             $table->primary('id');

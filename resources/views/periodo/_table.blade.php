@@ -27,6 +27,7 @@
                         <tr>
                             <td>{{ $periodo->inicio}}</td>
                             <td>{{ $periodo->fin }}</td>
+                            <td>{{ $periodo->nombre }}</td>
                             <td class="text-center">
                                 <button type="button" class="btn btn-danger btn-xs" title="Eliminar" data-toggle="modal" data-target=".modal-eliminacion" onclick="$('#id-eliminar').val('{{ $periodo->id }}')">
                                     <i class="fa fa-trash-o"></i>

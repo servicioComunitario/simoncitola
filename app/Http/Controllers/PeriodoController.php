@@ -9,7 +9,9 @@ class PeriodoController extends Controller
     
     public function index()
     {
-        //
+        $periodos = Periodo::all();
+        
+        return view("periodo.index")->with("periodos", $periodos);
     }
 
     
