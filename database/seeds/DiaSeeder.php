@@ -15,9 +15,9 @@ class DiaSeeder extends Seeder
   {
     $datos = [
     	[
-    		'id' 			=> '2017-04-12',
-    		'fin' 		=> '1',
-    		'tipo'		=> 'escolar'
+        'id'         => '2017-04-12',
+        'periodo_id' => '1',
+        'tipo'       => 'escolar'
     	]
     ];
 
