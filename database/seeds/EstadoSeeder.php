@@ -2,6 +2,8 @@
 
 use Illuminate\Database\Seeder;
 
+use App\Models\Estado;
+
 class EstadoSeeder extends Seeder
 {
     /**
@@ -18,7 +20,7 @@ class EstadoSeeder extends Seeder
         ];
 
         foreach ($estados as $estado) {
-			\App\Models\Estado::create($estado);        	
+			Estado::create($estado);        	
         }
     }
 }

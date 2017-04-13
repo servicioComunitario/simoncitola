@@ -2,6 +2,8 @@
 
 use Illuminate\Database\Seeder;
 
+use App\Models\User;
+
 class UsuarioSeeder extends Seeder
 {
     /**
@@ -21,7 +23,8 @@ class UsuarioSeeder extends Seeder
         ];
 
         foreach ($usuarios as $usuario) {
-			\App\Models\User::create($usuario);        	
+			User::create($usuario);        	
         }
     }
 }
+

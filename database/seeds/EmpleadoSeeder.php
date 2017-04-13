@@ -3,6 +3,8 @@
 use Illuminate\Database\Seeder;
 use App\Models\Rol;
 
+use App\Models\Empleado;
+
 class EmpleadoSeeder extends Seeder
 {
     /**
@@ -48,7 +50,7 @@ class EmpleadoSeeder extends Seeder
         ];
 
         foreach ($empleados as $empleado) {
-			\App\Models\Empleado::create($empleado);        	
+			Empleado::create($empleado);        	
         }
 
     }

@@ -2,6 +2,8 @@
 
 use Illuminate\Database\Seeder;
 
+use App\Models\Cargo;
+
 class CargoSeeder extends Seeder
 {
     /**
@@ -11,15 +13,15 @@ class CargoSeeder extends Seeder
      */
     public function run()
     {
-        $cargos = [
+        $datos = [
         	[
         		'nombre' 	=> 'admin',
         		'nivel'		=> '0'
         	]
         ];
 
-        foreach ($cargos as $cargo) {
-			\App\Models\Cargo::create($cargo);        	
+        foreach ($datos as $dato) {
+			Cargo::create($dato);        	
         }
     }
 }
