@@ -1,5 +1,7 @@
 <?php
 
+//namespace DataBase\Seeds;
+
 use Illuminate\Database\Seeder;
 
 class RolSeeder extends Seeder
