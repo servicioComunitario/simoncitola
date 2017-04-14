@@ -12,8 +12,8 @@
                 <table id="datatable" class="table table-striped table-bordered jambo_table">
                     <thead>
                         <tr>
-                            <th>Nombre</th>
                             <th>Nivel</th>
+                            <th>Nombre</th>
                             <th style="width: 40px;" class="text-center">
                                 <a href={{ route('roles.create') }} class="btn btn-success btn-xs" title="Crear">
                                     <i class="fa fa-plus"></i>
@@ -24,8 +24,8 @@
                     <tbody>
                         @foreach($roles as $rol)
                         <tr>
-                            <td>{{ $rol->nombre}}</td>
                             <td>{{ $rol->nivel }}</td>
+                            <td>{{ $rol->nombre}}</td>
                             <td class="text-center">
                                 <button type="button" class="btn btn-danger btn-xs" title="Eliminar" data-toggle="modal" data-target=".modal-eliminacion" onclick="$('#id-eliminar').val('{{ $rol->id }}')">
                                     <i class="fa fa-trash-o"></i>

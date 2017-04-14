@@ -17,7 +17,6 @@ class CargoController extends Controller
     }
 
 
-
     public function create()
     {
         $cargo = new Cargo();

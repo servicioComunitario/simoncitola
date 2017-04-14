@@ -11,4 +11,3 @@
     @include('rol._modal')
     @include('rol._table', ['roles' => $roles])
 @endsection
-

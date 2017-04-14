@@ -15,17 +15,18 @@ class CreateDiasTable extends Migration
     {
         Schema::create('dias', function (Blueprint $table) {
             $table->date('id');
-            $table->integer('periodo_id')->unsigned();
             $table->enum('tipo', ['libre', 'administrativo', 'escolar']);
+            $table->tinyInteger('dia');
+            $table->tinyInteger('mes');
+            $table->integer('anio');
+            $table->tinyInteger('semana_mes');
+            $table->tinyInteger('semana_anio');
+            $table->tinyInteger('dia_semana');
+            $table->tinyInteger('fin_semana');
             $table->timestamps();
 
             $table->primary('id');
             
-            $table->foreign('periodo_id')
-                ->references('id')
-                ->on('periodos')
-                ->onUpdate('cascade')
-                ->onDelete('restrict');
         });
     }
 

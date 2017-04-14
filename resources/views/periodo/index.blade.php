@@ -12,3 +12,7 @@
     @include('periodo._table', ['periodos' => $periodos])
 @endsection
 
+@section('js')
+	<script src={{ URL::asset('js/periodo/index.js') }}></script>
+@endsection
+

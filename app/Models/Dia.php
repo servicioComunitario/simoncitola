@@ -10,8 +10,15 @@ class Dia extends Model{
   protected $table = 'dias';
 
 	protected $fillable = [
-		'periodo_id',
-		'academico'
+        'id',
+        'dia',
+        'mes',
+        'anio',
+        'semana_mes',
+        'semana_anio',
+        'fin_semana',
+        'dia_semana',
+        'tipo',
 	];
 
 	public function actaInasistencias(){
@@ -42,10 +49,6 @@ class Dia extends Model{
 
     public function matriculaFinales(){
         return $this->hasMany(MatriculaFinal::class);
-    }
-
-    public function periodo(){
-        return $this->belongsTo(Periodo::class);
     }
 
     public function suplencias(){

@@ -12,9 +12,9 @@
                 <table id="datatable" class="table table-striped table-bordered jambo_table">
                     <thead>
                         <tr>
+                            <th>Nombre</th>
                             <th>Inicio</th>
                             <th>Fin</th>
-                            <th>Nombre</th>
                             <th style="width: 40px;" class="text-center">
                                 <a href={{ route('periodos.create') }} class="btn btn-success btn-xs" title="Crear">
                                     <i class="fa fa-plus"></i>
@@ -25,9 +25,9 @@
                     <tbody>
                         @foreach($periodos as $periodo)
                         <tr>
+                            <td>{{ $periodo->nombre }}</td>
                             <td>{{ $periodo->inicio}}</td>
                             <td>{{ $periodo->fin }}</td>
-                            <td>{{ $periodo->nombre }}</td>
                             <td class="text-center">
                                 <button type="button" class="btn btn-danger btn-xs" title="Eliminar" data-toggle="modal" data-target=".modal-eliminacion" onclick="$('#id-eliminar').val('{{ $periodo->id }}')">
                                     <i class="fa fa-trash-o"></i>

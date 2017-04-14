@@ -18,16 +18,16 @@
         		@endif
     				{{ csrf_field() }}
     				<div class="form-group">
-    					<label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Nombre <span class="required">*</span></label>
+    					<label class="control-label col-md-3 col-sm-3 col-xs-12" for="nombre"><span class="required">*</span> Nombre:</label>
     					<div class="col-md-6 col-sm-6 col-xs-12">
-    						<input type="text" name="nombre" class="form-control col-md-7 col-xs-12" placeholder="Nombre del Rol" value="{{ $rol->nombre or old('nombre') }}">
+    						<input type="text" name="nombre" class="form-control col-md-7 col-xs-12" id="nombre" placeholder="Nombre del Rol" value="{{ $rol->nombre or old('nombre') }}" autofocus>
                             @if ($errors->has('nombre'))
                                 <span class="text-danger">{{ $errors->first('nombre') }}</span>
                             @endif
     					</div>
     				</div>
     				<div class="form-group">
-    					<label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Nivel <span class="required">*</span></label>
+    					<label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name"><span class="required">*</span> Nivel:</label>
     					<div class="col-md-6 col-sm-6 col-xs-12">
     						<input type="text" name="nivel" class="form-control col-md-7 col-xs-12" placeholder="Nivel del Rol" value="{{ $rol->nivel or old('nivel') }}">
                             @if ($errors->has('nivel'))

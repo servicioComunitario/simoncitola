@@ -18,18 +18,18 @@
         		@endif
     				{{ csrf_field() }}
     				<div class="form-group">
-    					<label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Nombre <span class="required">*</span></label>
+    					<label class="control-label col-md-3 col-sm-3 col-xs-12" for="nombre"><span class="required">*</span> Nombre:</label>
     					<div class="col-md-6 col-sm-6 col-xs-12">
-    						<input type="text" name="nombre" class="form-control col-md-7 col-xs-12" placeholder="Nombre del motivo" value="{{ $motivo->nombre or old('nombre') }}">
+    						<input type="text" name="nombre" class="form-control col-md-7 col-xs-12" id="nombre" placeholder="Nombre del motivo" value="{{ $motivo->nombre or old('nombre') }}" autofocus>
                             @if ($errors->has('nombre'))
                                 <span class="text-danger">{{ $errors->first('nombre') }}</span>
                             @endif
     					</div>
     				</div>
                     <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Descripción <span class="required">*</span></label>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="descripcion"><span class="required">*</span> Descripción:</label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            <textarea name="descripcion" class="form-control col-md-7 col-xs-12" placeholder="Descripción del motivo" style="height: 80px">{{ $motivo->descripcion or old('descripcion') }}</textarea>
+                            <textarea name="descripcion" class="form-control col-md-7 col-xs-12" id="descripcion" placeholder="Descripción del motivo" style="height: 80px; max-width: 100%">{{ $motivo->descripcion or old('descripcion') }}</textarea>
                             @if ($errors->has('descripcion'))
                                 <span class="text-danger">{{ $errors->first('descripcion') }}</span>
                             @endif

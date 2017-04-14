@@ -13,7 +13,7 @@ class UpdatePeriodoRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,9 @@ class UpdatePeriodoRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'inicio' => 'required|date_format:d-m-Y|before:fin',
+            'fin'    => 'required|date_format:d-m-Y|after:inicio',
+            "nombre" => "required|unique:periodos,nombre,".$this->periodo->id.","."id"
         ];
     }
 }
