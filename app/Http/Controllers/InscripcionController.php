@@ -68,18 +68,6 @@ class InscripcionController extends Controller
 
       DB::beginTransaction();
       try{
-        // ALUMNO //////////////////////////////////////////////////////////////////////////
-        $datos_alumno['nombre']           = $request->get('nombreAlumno');
-        $datos_alumno['nombre2']          = $request->get('nombre2Alumno');
-        $datos_alumno['apellido']         = $request->get('apellidoAlumno');
-        $datos_alumno['apellido2']        = $request->get('apellido2Alumno');
-        $datos_alumno['cedula']           = $request->get('cedulaAlumno');
-        $datos_alumno['lugar_nacimiento'] = $request->get('lugarNacimientoAlumno');
-        $datos_alumno['fecha_nacimiento'] = $request->get('fechaNacimientoAlumno');
-        $datos_alumno['direccion']        = $request->get('direccionAlumno');
-        $datos_alumno['estado_id']        = Estado::$ACTIVO;
-
-        $alumno = Alumno::create($datos_alumno);
 
         // PADRE ///////////////////////////////////////////////////////////////////////////
         $datos_padre['nombre']            = $request->get('nombrePadre');
@@ -92,11 +80,9 @@ class InscripcionController extends Controller
         $datos_padre['direccion_trabajo'] = $request->get('direccionTrabajoPadre');
         $datos_padre['telefono']          = $request->get('telefonoPadre');
         $datos_padre['telefono2']         = $request->get('telefono2Padre');
-
-        $datos_padre['parentesco_id']     = Parentesco::$PADRE;
-
-        $padre = Representante::create($datos_padre);
-
+        
+        $padre                            = Representante::create($datos_padre);
+        
         // MADRE ///////////////////////////////////////////////////////////////////////////
         $datos_madre['nombre']            = $request->get('nombreMadre');
         $datos_madre['nombre2']           = $request->get('nombre2Madre');
@@ -108,18 +94,45 @@ class InscripcionController extends Controller
         $datos_madre['direccion_trabajo'] = $request->get('direccionTrabajoMadre');
         $datos_madre['telefono']          = $request->get('telefonoMadre');
         $datos_madre['telefono2']         = $request->get('telefono2Madre');
-        $datos_madre['parentesco_id']     = Parentesco::$MADRE;
-
-        $madre = Representante::create($datos_madre);
+        $madre                            = Representante::create($datos_madre);
         
+        // ALUMNO //////////////////////////////////////////////////////////////////////////
+        $datos_alumno['estado_id']        = Estado::$ACTIVO;
+        $datos_alumno['padre_id']         = $padre->id;
+        $datos_alumno['madre_id']         = $madre->id;
+        $datos_alumno['nombre']           = $request->get('nombreAlumno');
+        $datos_alumno['nombre2']          = $request->get('nombre2Alumno');
+        $datos_alumno['apellido']         = $request->get('apellidoAlumno');
+        $datos_alumno['apellido2']        = $request->get('apellido2Alumno');
+        $datos_alumno['cedula']           = $request->get('cedulaAlumno');
+        $datos_alumno['lugar_nacimiento'] = $request->get('lugarNacimientoAlumno');
+        $datos_alumno['fecha_nacimiento'] = $request->get('fechaNacimientoAlumno');
+        $datos_alumno['direccion']        = $request->get('direccionAlumno');
+        $alumno                           = Alumno::create($datos_alumno);
+
+
+        switch ($request->get('responsable')) {
+            case '0':
+                $responsable = $madre->id;
+                break;
+            case '1':
+                $responsable = $padre->id;
+                break;
+            case '2':
+                $responsable = $madre->id; //se obtendra del id de la persona responsable(la nueva que viene del formulario) al registrarla
+                break;
+            default:
+                $responsable = null;
+                break;
+        }
+
         // INSCRIPCION /////////////////////////////////////////////////////////////////////
         $datos_inscripcion['empleado_id']            = Auth::id();
         $datos_inscripcion['alumno_id']              = $alumno->id;
-        $datos_inscripcion['seccion_id']             = $request->get('secciones');
-        $datos_inscripcion['representante_padre_id'] = $padre->id;
-        $datos_inscripcion['representante_madre_id'] = $madre->id;
+        $datos_inscripcion['seccion_id']             = $request->get('seccion');
         $datos_inscripcion['responsable_id']         = $madre->id;
-
+        $datos_inscripcion['parentesco_id']          = Parentesco::$MADRE;
+        
         $datos_inscripcion['partida_nacimiento']     = $request->get('partidaNacimiento');
         $datos_inscripcion['certificado_vacuna']     = $request->get('certificadoVacunas');
         $datos_inscripcion['foto']                   = $request->get('fotos');
@@ -128,10 +141,10 @@ class InscripcionController extends Controller
         $datos_inscripcion['carta_residencia']       = $request->get('cartaResidencia');
         $datos_inscripcion['otros_ninios_inscritos'] = $request->get('otrosNininos');
         $datos_inscripcion['colabora']               = $request->get('colabora');
-
-        $datos_inscripcion['dia_laborable_id']       = '2017-04-09';
-
-        $inscripcion = Inscripcion::create($datos_inscripcion);
+        
+        $datos_inscripcion['dia_id']                 = '2017-04-12';
+        
+        $inscripcion                                 = Inscripcion::create($datos_inscripcion);
 
         session()->flash('msg_success', 'Se realizo la inscripcion con exito');
         DB::commit();
@@ -141,7 +154,7 @@ class InscripcionController extends Controller
           // return Redirect::to('/empleado');
       };
       // session()->flash('msg_success', $e->getMessage());
-      return redirect()->route('inscripcion.index');
+      return redirect()->route('inscripciones.index');
 /*
       // para validar los parametros
       $this->validate($request, [
@@ -184,9 +197,24 @@ class InscripcionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Inscripcion $inscripcion)
     {
-        //
+      $alumno = new Alumno;
+      $padre = new Representante;
+      $madre = new Representante;
+      $responsable = new Representante;
+      $empleado = new Empleado;
+      $secciones = Seccion::all();
+
+      return view('inscripcion.edit')->with( [
+        'inscripcion' => $inscripcion,
+        'alumno'      => $alumno,
+        'padre'       => $padre,
+        'madre'       => $madre,
+        'responsable' => $responsable,
+        'secciones'   => $secciones
+      ]);
+      
     }
 
     /**

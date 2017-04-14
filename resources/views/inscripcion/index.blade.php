@@ -32,7 +32,7 @@
 	                            <td>{{ $inscripcion->alumno->nombre." ".$inscripcion->alumno->apellido }}</td>
 	                            <td>{{ $inscripcion->responsable->nombre." ".$inscripcion->responsable->apellido }}</td>
 	                            <td>{{ $inscripcion->seccion->nombre }}</td>
-	                            <td>{{ $inscripcion->diaLaborable->periodo->titulo }}</td>
+	                            <td>{{ $inscripcion->dia->periodo->nombre }}</td>
 	                            <td class="text-center">
 	                                <button type="button" class="btn btn-danger btn-xs" title="Eliminar" data-toggle="modal" data-target=".modal-eliminacion" onclick="$('#id-eliminar').val('{{ $inscripcion->id }}')">
 	                                    <i class="fa fa-trash-o"></i>

@@ -1,6 +1,13 @@
 @extends('layouts.base')
 
 @section('contenido')
+{{-- 
+  @if(count($errors) > 0)
+    @foreach($errors->all() as $error)
+      <p>{{ $error }}</p>
+    @endforeach
+  @endif
+--}}
   <div class="row">
     <form class="form-horizontal form-label-left" action="{{route('inscripciones.store')}}" method="POST" >
       {{-- INFORMACION DEL ALUMNO Y DOCUMENTOS PRESENTADOS --}}
@@ -134,6 +141,9 @@
                         <option value="{{ $seccion->id }}">{{ $seccion->nombre }}</option>
                       @endforeach
                     </select>
+                    @if ($errors->has('seccion'))
+                      <span style="color: red;">{{ $errors->first('seccion') }}</span>
+                    @endif
                   </div>
                 </div>
 
