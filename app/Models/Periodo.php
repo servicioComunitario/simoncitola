@@ -37,4 +37,32 @@ class Periodo extends Model{
         $this->attributes['fin'] = Carbon::parse($fin)->toDateString();
     }
 
+
+    public static function generarDias($inicio, $fin)
+    {
+        $inicio     = Carbon::parse($inicio);
+        $fin        = Carbon::parse($fin);
+        $anioInicio = $inicio->format('Y');
+        $anioFin    = $fin->format('Y');
+
+        for ($i=$anioInicio; $i <= $anioFin; $i++) { 
+
+            if(!Dia::where('anio', $i)->limit(1)->count()){ //Se verifica que los dias de ese anio no estén creados aún
+                $dias = Dia::getDiasAnio($i);
+
+                foreach ($dias as $dia) {
+
+                    $fecha = Carbon::parse($dia['id']);
+
+                    if($fecha->lt($inicio) || $fecha->gt($fin) || $dia['fin_semana']){
+                        $dia['tipo'] = 'libre';
+                    }else{
+                        $dia['tipo'] = 'escolar';
+                    }
+
+                    Dia::create($dia);
+                }
+            }
+        }
+    }
 }

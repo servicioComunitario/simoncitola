@@ -40,8 +40,19 @@ Route::group(['middleware' => 'auth'], function(){
 
     Route::name('home_path')->get('/home', 'HomeController@index');
 
+    ############################################################################
+    #                           Calendario                                     #
+    ############################################################################
+    
+    # Dias
+    Route::name('dias.show')->get('dias/{anio}', 'DiaController@show');
+    
+
     /****************************** Admin *************************************/
     Route::group(['middleware' => 'administrador'], function(){
+
+        #Dias
+        Route::name('dias.update')->put('dias/{anio}', 'DiaController@update');
 
         ########################################################################
         #                           Admnistración                              #
@@ -64,11 +75,7 @@ Route::group(['middleware' => 'auth'], function(){
 
         # Roles
         Route::resource('roles', 'RolController');
-
-
-
-        //////////////////// Dias Laborables////////////////
-        //Route::get('diaLaborables','DiaLaborableController@index');
+        
     });
 
 });

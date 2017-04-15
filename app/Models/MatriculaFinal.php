@@ -8,7 +8,7 @@ class MatriculaFinal extends Model{
 
 	protected $fillable = [
 		'seccion_id',
-		'dia_laborable_id',
+		'dia_id',
 		'observacion'
 	];
 

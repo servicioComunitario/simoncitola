@@ -1,7 +1,7 @@
 @extends('layouts.base')
 
 @section('css')
-	<link rel="stylesheet" type="text/css" href={{ URL::asset('css/dia/estilos.css') }}>
+	<link rel="stylesheet" type="text/css" href={{ URL::asset('css/dia/show.css') }}>
 @endsection
 
 @section('contenido')
@@ -9,9 +9,9 @@
 	<div class="x_panel">
 		<div class="x_title">
       			<ul class="nav navbar-left panel_toolbox">
-        			<li><a href="{{ route('dias.show'), $anio-1 }}"><i class="fa fa-chevron-left"></i></a></li>
-        			<li><h2>{{ $anio+1 }}</h2></li>
-        			<li><a href="{{ route('dias.show'), $anio+1 }}"><i class="fa fa-chevron-right"></i></a></li>
+        			<li><a href="{{ route('dias.show', $anio-1) }}"><i class="fa fa-chevron-left"></i></a></li>
+        			<li><h2>{{ $anio }}</h2></li>
+        			<li><a href="{{ route('dias.show', $anio+1) }}"><i class="fa fa-chevron-right"></i></a></li>
         		</ul>
         		<ul class="nav navbar-right panel_toolbox">
         			<li class="pull-right"><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
@@ -1101,6 +1101,9 @@
 @endsection
 
 @section('js')
-	<script type="text/javascript"> var calendarioEscolar = {!! $dias !!}; </script>
-	<script type="text/javascript" src={{ URL::asset('js/dia/acciones.js') }}></script>
+	<script type="text/javascript">
+		var calendarioEscolar = {!! $dias !!};
+		var urlUpdate = "{{ route('dias.update', -1) }}";
+	</script>
+	<script type="text/javascript" src={{ URL::asset('js/dia/show.js') }}></script>
 @endsection

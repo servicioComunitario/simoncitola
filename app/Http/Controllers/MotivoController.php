@@ -44,7 +44,7 @@ class MotivoController extends Controller
 
     public function show($id)
     {
-        return "Show";
+        return redirect()->route('motivos.index');
     }
 
     public function edit(Motivo $motivo)

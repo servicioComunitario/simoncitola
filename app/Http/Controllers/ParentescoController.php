@@ -44,7 +44,7 @@ class ParentescoController extends Controller
 
     public function show($id)
     {
-        return "Show";
+        return redirect()->route('parentescos.index');
     }
 
     public function edit(Parentesco $parentesco)

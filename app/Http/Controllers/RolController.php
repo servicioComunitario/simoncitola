@@ -42,7 +42,7 @@ class RolController extends Controller
 
     public function show($id)
     {
-        return "Show";
+        return redirect()->route('roles.index');
     }
 
     public function edit(Rol $rol)
