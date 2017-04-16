@@ -43,7 +43,7 @@ class CargoController extends Controller
 
     public function show($id)
     {
-        return "Show";
+        return redirect()->route('cargos.index');
     }
 
     public function edit(Cargo $cargo)

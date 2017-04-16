@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Periodo;
 use App\Http\Requests\CreatePeriodoRequest;
 use App\Http\Requests\UpdatePeriodoRequest;
+use DB;
 
 class PeriodoController extends Controller
 {
@@ -27,6 +28,8 @@ class PeriodoController extends Controller
     public function store(CreatePeriodoRequest $request)
     {
         try{
+            DB::beginTransaction();
+
             $periodo = Periodo::create(
                 $request->only(
                     'inicio',
@@ -34,9 +37,13 @@ class PeriodoController extends Controller
                     'nombre'
                 )
             );
+            
+            Periodo::generarDias($request->inicio, $request->fin);
 
+            DB::commit();
             session()->flash('msg_success', "El Periodo '$periodo->nombre' ha sido creado.");
         } catch (Exception $e) {
+            DB::rollback();
             session()->flash('msg_danger', $e->getMessage());
         }
 
@@ -46,7 +53,7 @@ class PeriodoController extends Controller
     
     public function show($id)
     {
-        return "Show";
+        return redirect()->route('periodos.index');
     }
 
     
@@ -59,6 +66,8 @@ class PeriodoController extends Controller
    public function update(UpdatePeriodoRequest $request, Periodo $periodo)
     {
         try{
+            DB::beginTransaction();
+
             $periodo->update(
                 $request->only(
                     'inicio',
@@ -67,8 +76,14 @@ class PeriodoController extends Controller
                 )
             );
 
+            Periodo::generarDias($request->inicio, $request->fin);
+
+            DB::commit();
+
             session()->flash('msg_info', "El periodo '$periodo->nombre' ha sido actualizado.");
         } catch (Exception $e) {
+            DB::rollback();
+
             session()->flash('msg_danger', $e->getMessage());
         }
 

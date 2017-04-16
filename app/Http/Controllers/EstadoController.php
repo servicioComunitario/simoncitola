@@ -44,7 +44,7 @@ class EstadoController extends Controller
 
     public function show($id)
     {
-        return "Show";
+        return redirect()->route('estados.index');
     }
 
     public function edit(Estado $estado)

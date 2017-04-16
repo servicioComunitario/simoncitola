@@ -8,9 +8,9 @@
           <div class="col-middle">
             <div class="text-center text-center">
               <h1 class="error-number text-danger">403</h1>
-              <h2>¡¡Acceso Denegado!! :(</h2>
+              <h2>¡Acceso Denegado!</h2>
               <p>
-              	Usted no tiene permisos para entrar a esta pagina
+              	<b>Usted no tiene permisos para entrar a esta página.</b>
               </p>
               <div class="mid_center">
                 <i class="fa fa-lock fa-5x text-danger" aria-hidden="true"></i>

@@ -6,6 +6,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
 	<title>{{ config('app.name', 'Laravel') }}</title>
 
@@ -101,11 +102,8 @@
                                         <li><a href="calendar.html">Calendar</a></li>
                                     </ul>
                                 </li>
-                                <li><a><i class="fa fa-table"></i> Tables <span class="fa fa-chevron-down"></span></a>
-                                    <ul class="nav child_menu">
-                                        <li><a href="tables.html">Tables</a></li>
-                                        <li><a href="tables_dynamic.html">Table Dynamic</a></li>
-                                    </ul>
+                                <li>
+                                    <a href="{{ route('dias.show', Date('Y')) }}"><i class="fa fa-calendar"></i> Calendario Escolar</a>
                                 </li>
                                 <li><a><i class="fa fa-gears fa-spin1 fa-fw"></i> Administración <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
@@ -116,7 +114,6 @@
                                         <li><a href="{{ route('parentescos.index') }}">Parentescos</a></li>
                                         <li><a href="{{ route('periodos.index') }}">Periodos</a></li>
                                         <li><a href="{{ route('roles.index') }}">Roles</a></li>
-                                        <li><a href="pricing_tables.html">Pricing Tables</a></li>
                                     </ul>
                                 </li>
                                 <li><a><i class="fa fa-sitemap"></i> Multilevel Menu <span class="fa fa-chevron-down"></span></a>

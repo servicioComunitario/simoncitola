@@ -106,15 +106,14 @@ class Dia extends Model{
             }
 
             $dias[] = [
-                'dia'        => date('j', $primerDia),
-                'mes'        => date('n', $primerDia),
-                'anio'       => date('Y', $primerDia),
-                'fecha'      => date('Y-m-d', $primerDia),
-                'semanaMes'  => $semanaMes,
-                'semanaAnio' => $semanaAnio,
-                'finSemana'  => $finDeSemana,
-                'diaSemana'  => $diaDeSemana,
-                'tipo'       => 0
+                'id'          => date('Y-m-d', $primerDia),
+                'dia'         => date('j', $primerDia),
+                'mes'         => date('n', $primerDia),
+                'anio'        => date('Y', $primerDia),
+                'semana_mes'  => $semanaMes,
+                'semana_anio' => $semanaAnio,
+                'fin_semana'  => $finDeSemana,
+                'dia_semana'  => $diaDeSemana,
             ];
           
             $primerDia = strtotime("+ 1 day", $primerDia);
