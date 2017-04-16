@@ -78,7 +78,7 @@
                                 </li>
                                 <li><a><i class="fa fa-edit"></i> Inscripción <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
-                                        <li><a href="{{ route('inscripciones.create') }}">Nuevo</a></li>
+                                        <li><a href="{{ route('inscripciones.index') }}">Inscripción</a></li>
                                         <li><a href="{{ route('alumnos.index') }}">Alumnos</a></li>
                                         <li><a href="{{ route('representantes.index') }}">Padres y Representantes</a></li>
                                         <li><a href="form_advanced.html">Advanced Components</a></li>
@@ -110,6 +110,7 @@
                                 <li><a><i class="fa fa-gears fa-spin1 fa-fw"></i> Administración <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
                                         <li><a href="{{ route('cargos.index') }}">Cargos</a></li>
+                                        <li><a href="{{ route('empleados.index') }}">Empleados</a></li>
                                         <li><a href="{{ route('estados.index') }}">Estados</a></li>
                                         <li><a href="{{ route('motivos.index') }}">Motivos</a></li>
                                         <li><a href="{{ route('parentescos.index') }}">Parentescos</a></li>

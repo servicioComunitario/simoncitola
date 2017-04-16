@@ -24,6 +24,11 @@ class Inscripcion extends Model
 		'dia_id'
 	];
 
+	public function procesarRequest($request)
+	{
+		return null;
+	}
+
   public function alumno(){
     return $this->belongsTo(Alumno::class);
   }

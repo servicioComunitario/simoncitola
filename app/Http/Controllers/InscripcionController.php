@@ -66,8 +66,8 @@ class InscripcionController extends Controller
      */
     public function store(CreateInscripcionRequest $request){
 
-      DB::beginTransaction();
       try{
+        DB::beginTransaction();
 
         // PADRE ///////////////////////////////////////////////////////////////////////////
         $datos_padre['nombre']            = $request->get('nombrePadre');
@@ -130,7 +130,7 @@ class InscripcionController extends Controller
         $datos_inscripcion['empleado_id']            = Auth::id();
         $datos_inscripcion['alumno_id']              = $alumno->id;
         $datos_inscripcion['seccion_id']             = $request->get('seccion');
-        $datos_inscripcion['responsable_id']         = $madre->id;
+        $datos_inscripcion['responsable_id']         = $responsable;
         $datos_inscripcion['parentesco_id']          = Parentesco::$MADRE;
         
         $datos_inscripcion['partida_nacimiento']     = $request->get('partidaNacimiento');
@@ -199,22 +199,12 @@ class InscripcionController extends Controller
      */
     public function edit(Inscripcion $inscripcion)
     {
-      $alumno = new Alumno;
-      $padre = new Representante;
-      $madre = new Representante;
-      $responsable = new Representante;
-      $empleado = new Empleado;
       $secciones = Seccion::all();
 
       return view('inscripcion.edit')->with( [
         'inscripcion' => $inscripcion,
-        'alumno'      => $alumno,
-        'padre'       => $padre,
-        'madre'       => $madre,
-        'responsable' => $responsable,
         'secciones'   => $secciones
-      ]);
-      
+      ]);      
     }
 
     /**
@@ -224,9 +214,49 @@ class InscripcionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Inscripcion $inscripcion)
     {
-        //
+      switch ($request->get('responsable')) {
+        case '0':
+          $responsable = $inscripcion->alumno->madre_id;
+          break;
+        case '1':
+          $responsable = $inscripcion->alumno->padre_id;
+          break;
+        case '2':
+          $responsable = $inscripcion->alumno->madre_id;; //se obtendra del id de la persona responsable(la nueva que viene del formulario) al registrarla
+          break;
+        default:
+          $responsable = null;
+          break;
+      }
+
+      // INSCRIPCION /////////////////////////////////////////////////////////////////////
+      $datos_inscripcion['seccion_id']             = $request->get('seccion');
+      $datos_inscripcion['responsable_id']         = $responsable;
+      $datos_inscripcion['parentesco_id']          = Parentesco::$MADRE;
+      
+      $datos_inscripcion['partida_nacimiento']     = $request->get('partidaNacimiento');
+      $datos_inscripcion['certificado_vacuna']     = $request->get('certificadoVacunas');
+      $datos_inscripcion['foto']                   = $request->get('fotos');
+      $datos_inscripcion['copia_cedula_madre']     = $request->get('copiaCedulaMadre');
+      $datos_inscripcion['constancia_trabajo']     = $request->get('constanciaTrabajo');
+      $datos_inscripcion['carta_residencia']       = $request->get('cartaResidencia');
+      $datos_inscripcion['otros_ninios_inscritos'] = $request->get('otrosNininos');
+      $datos_inscripcion['colabora']               = $request->get('colabora');
+      
+      // $datos_inscripcion['dia_id']                 = '2017-04-12';
+      
+      try{
+        $inscripcion->update( $datos_inscripcion );
+
+        session()->flash('msg_info', "La inscripcion ha sido actualizada.");
+      } catch (Exception $e) {
+        session()->flash('msg_danger', $e->getMessage());
+      }
+
+      return redirect()->route('inscripciones.index', $inscripcion->id);
+        
     }
 
     /**

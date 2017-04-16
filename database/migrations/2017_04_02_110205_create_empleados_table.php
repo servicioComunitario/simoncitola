@@ -27,25 +27,25 @@ class CreateEmpleadosTable extends Migration
             $table->text('telefono');
             $table->text('telefono2')->nullable();
             $table->date('fecha_inicio_institucion');
-            $table->integer('anios_servicio_nacional')->unsigned();
-            $table->integer('anios_servicio_estadal')->unsigned();
-            $table->integer('anios_servicio_municipal')->unsigned();
-            $table->integer('anios_servicio_otros')->unsigned();
-            $table->text('titulo')->nullable();
+            $table->integer('anios_servicio_nacional')->unsigned()->nullable();;
+            $table->integer('anios_servicio_estadal')->unsigned()->nullable();;
+            $table->integer('anios_servicio_municipal')->unsigned()->nullable();;
+            $table->integer('anios_servicio_otros')->unsigned()->nullable();;
+            $table->text('titulo')->nullable()->nullable();;
             $table->text('especialidad')->nullable();
             $table->text('codigo')->nullable();
             $table->integer('funcion_id')->unsigned();
             $table->text('nivel_educativo')->nullable();
             $table->text('centro_operativo_labora')->nullable();
-            $table->integer('numero_horas')->unsigned();
+            $table->integer('numero_horas')->unsigned()->nullable();;
             $table->text('nivel_educativo_atiende')->nullable();
-            $table->double('sueldo_mensual', 15, 8);
-            $table->text('turno');
-            $table->boolean('estudia_actualmente');
+            $table->double('sueldo_mensual', 15, 8)->nullable();;
+            $table->text('turno')->nullable();;
+            $table->boolean('estudia_actualmente')->nullable();;
             $table->text('descripcion_estudio')->nullable();
             $table->text('observacion')->nullable();
-            $table->boolean('copia_ultimo_recibo');
-            $table->boolean('copia_cedula');
+            $table->boolean('copia_ultimo_recibo')->nullable();;
+            $table->boolean('copia_cedula')->nullable();;
 
             $table->timestamps();
 

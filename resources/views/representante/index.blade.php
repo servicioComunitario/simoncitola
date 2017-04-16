@@ -29,17 +29,32 @@
                 <td>{{ $representante->nombre." ".$representante->nombre2 }}</td>
                 <td>{{ $representante->apellido." ".$representante->apellido2 }}</td>
                 <td>{{ $representante->cedula }}</td>
-                <td>
-                  @if(sizeof($representante->responsable))
-                    responsable
-                  @elseif(sizeof($representante->inscripcionPadre))
-                    padre
-                  @elseif(sizeof($representante->inscripcionMadre))
-                    madre
+                
+                  @if(count($representante->inscripciones) > 0)
+                    <td>
+                    {{ $representante->inscripciones->last()->alumno->nombre." ".$representante->inscripciones->last()->alumno->apellido }}
+                    </td>
+                    <td>
+                      {{ $representante->inscripciones->last()->parentesco->nombre }}
+                    </td>
+                  @else
+                    @if(count($representante->hijosP) > 0)
+                    <td>
+                      {{ $representante->hijosP->last()->nombre." ".$representante->hijosP->last()->apellido }}
+                    </td>
+                    <td>
+                      Padre
+                    </td>
+                    @elseif(count($representante->hijosM) > 0)
+                    <td>
+                      {{ $representante->hijosM->last()->nombre." ".$representante->hijosM->last()->apellido }}
+                    </td>
+                    <td>
+                      Madre
+                    </td>
+                    @endif
                   @endif
-                  
                 </td>
-                <td>{{ $representante->parentesco->nombre }}</td>
                 <td class="text-center">
 
                   <a href={{ route('representantes.show', $representante->id) }} class="btn btn-success btn-xs" title="Editar">

@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class Representante extends Model
 {
 	protected $fillable = [
-		'parentesco_id',
 		'nombre',
 		'nombre2',
 		'apellido',
@@ -20,16 +19,16 @@ class Representante extends Model
 		'telefono2'
 	];
 
-	public function inscripcionPadre(){
-		return $this->hasMany(Inscripcion::class, 'representante_padre_id', 'id' );
-	}
-
-	public function inscripcionMadre(){
-		return $this->hasMany(Inscripcion::class, 'representante_madre_id', 'id' );
-	}
-
-	public function inscripcionResponsable(){
+	public function inscripciones(){
 		return $this->hasMany(Inscripcion::class, 'responsable_id', 'id' );
+	}
+
+	public function hijosP(){
+		return $this->hasMany(Alumno::class, 'padre_id', 'id' );
+	}
+
+	public function hijosM(){
+		return $this->hasMany(Alumno::class, 'madre_id', 'id' );
 	}
 
 	

@@ -16,6 +16,6 @@ class Cargo extends Model{
   }
 
   public function empleadosSegunFuncion(){
-    return $this->hasMany(Empleado::class, 'funcion', 'id' );
+    return $this->hasMany(Empleado::class, 'funcion_id', 'id' );
   }
 }

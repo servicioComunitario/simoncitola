@@ -65,6 +65,8 @@ Route::group(['middleware' => 'auth'], function(){
         # Roles
         Route::resource('roles', 'RolController');
 
+        # Empleados        
+        Route::resource('empleados', 'EmpleadoController');
 
 
         //////////////////// Dias Laborables////////////////

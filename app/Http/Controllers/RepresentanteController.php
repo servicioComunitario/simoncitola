@@ -50,9 +50,13 @@ class RepresentanteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Representante $representante)
     {
-        //
+      return view('representante.show')->with([
+        'representante' => $representante,
+        'disabled' => 'disabled'
+
+        ]);
     }
 
     /**
