@@ -9,6 +9,9 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
 	<title>{{ config('app.name', 'Laravel') }}</title>
+    
+    <!-- Icono-->
+    <link rel="icon" type="image/png" href={{ URL::asset('images/birrete.ico') }} />
 
 	<!-- Bootstrap CSS 3.3.7-->
 	<link href={{ URL::asset('css/bootstrap.min.css') }} rel="stylesheet">
@@ -43,10 +46,10 @@
                 <div class="left_col scroll-view">
                     <div class="navbar nav_title" style="border: 0;">
                         <a href="{{ route('home_path')}}" class="site_title">
-							<i class="fa fa-paw"></i>
+							<i class="fa fa-graduation-cap"></i>
 							{{-- <span>Gentelella Alela!</span> --}}
 							{{-- <span>{{ config('app.name', 'Laravel') }}</span> --}}
-							<span>Simoncito LA</span>
+							<span>SimoncitoLA</span>
 						</a>
                     </div>
                     <div class="clearfix"></div>
@@ -102,8 +105,7 @@
                                         <li><a href="calendar.html">Calendar</a></li>
                                     </ul>
                                 </li>
-                                <li>
-                                    <a href="{{ route('dias.show', Date('Y')) }}"><i class="fa fa-calendar"></i> Calendario Escolar</a>
+                                <li><a href="{{ route('dias.show', Date('Y')) }}"><i class="fa fa-calendar"></i> Calendario Escolar</a>
                                 </li>
                                 <li><a><i class="fa fa-gears fa-spin1 fa-fw"></i> Administración <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
@@ -113,20 +115,12 @@
                                         <li><a href="{{ route('motivos.index') }}">Motivos</a></li>
                                         <li><a href="{{ route('parentescos.index') }}">Parentescos</a></li>
                                         <li><a href="{{ route('periodos.index') }}">Periodos</a></li>
-                                        <li><a href="{{ route('roles.index') }}">Roles</a></li>
                                     </ul>
                                 </li>
-                                <li><a><i class="fa fa-sitemap"></i> Multilevel Menu <span class="fa fa-chevron-down"></span></a>
+                                <li><a><i class="fa fa-lock"></i> Seguridad <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
-                                        <li><a href="#level1_1">Level One</a></li>
-                                        <li><a>Level One<span class="fa fa-chevron-down"></span></a>
-                                            <ul class="nav child_menu">
-                                                <li class="sub_menu"><a href="level2.html">Level Two</a></li>
-                                                <li><a href="#level2_1">Level Two</a></li>
-                                                <li><a href="#level2_2">Level Two</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="#level1_2">Level One</a></li>
+                                        <li><a href="{{ route('usuarios.index') }}">Usuarios</a></li>
+                                        <li><a href="{{ route('roles.index') }}">Roles</a></li>
                                     </ul>
                                 </li>
                             </ul>

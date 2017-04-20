@@ -8,6 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
     <title>{{ config('app.name') }}</title>
+
+    <!-- Icono-->
+    <link rel="icon" type="image/png" href={{ URL::asset('images/birrete.ico') }} />
     
     <!-- Bootstrap -->
     <link href={{ asset("css/bootstrap.min.css") }} rel="stylesheet">
@@ -28,7 +31,7 @@
                 <form method="post" action={{ url('/login') }}>
                     {!! csrf_field() !!}
                     
-                    <h1>Login Form</h1>
+                    <h1>Iniciar Sesión</h1>
                     <div class="form-group has-feedback {{ $errors->has('email') ? ' has-error' : '' }}">
                         <input type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="Email">
                         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
@@ -49,24 +52,26 @@
                         @endif
                     
                     </div>
-                    <div>
-                        <input type="submit" class="btn btn-default submit" value="Log in">
-                        <a class="reset_pass" href={{  url('/password/reset') }}>Lost your password?</a>
+                    <div class="row">
+                        <div class="col-xs-12 text-center center-block">
+                            <input type="submit" class="btn btn-default submit" value="Entrar">
+                            {{-- <a class="reset_pass" href={{  url('/password/reset') }}>¿Olvidó su contraseña?</a> --}}
+                        </div>
                     </div>
                     
                     <div class="clearfix"></div>
                     
                     <div class="separator">
-                        <p class="change_link">New to site?
-                            <a href="{{ url('/register') }}" class="to_register"> Create Account </a>
+                        <p class="change_link">¿No posee un usuario?
+                            <a href="{{ url('/register') }}" class="to_register"> Crear Cuenta </a>
                         </p>
                         
                         <div class="clearfix"></div>
                         <br />
                         
                         <div>
-                            <h1><i class="fa fa-paw"></i> Gentelella Alela!</h1>
-                            <p>©2016 All Rights Reserved. Gentelella Alela! is a Bootstrap 3 template. Privacy and Terms</p>
+                            <h1><i class="fa fa-graduation-cap"></i> Simoncito "Las Américas"</h1>
+                            <p>©2017 Simoncito "Las Américas".</p>
                         </div>
                     </div>
                 </form>

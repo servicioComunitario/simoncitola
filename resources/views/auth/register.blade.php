@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <!-- Meta, title, CSS, favicons, etc. -->
@@ -8,6 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
     <title>{{ config('app.name') }}</title>
+
+    <!-- Icono-->
+    <link rel="icon" type="image/png" href={{ URL::asset('images/birrete.ico') }} />
     
     <!-- Bootstrap -->
     <link href={{ asset("css/bootstrap.min.css") }} rel="stylesheet">
@@ -27,10 +30,10 @@
             <form method="post" action="{{ url('/register') }}">
                 {!! csrf_field() !!}
                 
-                <h1>Create Account</h1>
+                <h1>Crear Cuenta</h1>
                 
                 <div class="form-group has-feedback{{ $errors->has('name') ? ' has-error' : '' }}">
-                    <input type="text" class="form-control" name="name" value="{{ old('name') }}" placeholder="Full Name">
+                    <input type="text" class="form-control" name="name" value="{{ old('name') }}" placeholder="Ingrese su Cédula">
                     <span class="glyphicon glyphicon-user form-control-feedback"></span>
                     
                     @if ($errors->has('name'))
@@ -41,7 +44,7 @@
                 </div>
                 
                 <div class="form-group has-feedback{{ $errors->has('email') ? ' has-error' : '' }}">
-                    <input type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="Email">
+                    <input type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="Ingrese su Email">
                     <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
                     
                     @if ($errors->has('email'))
@@ -52,7 +55,7 @@
                 </div>
                 
                 <div class="form-group has-feedback{{ $errors->has('password') ? ' has-error' : '' }}">
-                    <input type="password" class="form-control" name="password" placeholder="Password">
+                    <input type="password" class="form-control" name="password" placeholder="Ingrese una Password">
                     <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                     
                     @if ($errors->has('password'))
@@ -63,7 +66,7 @@
                 </div>
                 
                 <div class="form-group has-feedback{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
-                    <input type="password" name="password_confirmation" class="form-control" placeholder="Confirm password">
+                    <input type="password" name="password_confirmation" class="form-control" placeholder="Repita la Password">
                     <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                     
                     @if ($errors->has('password_confirmation'))
@@ -73,22 +76,22 @@
                     @endif
                 </div>
                 <div>
-                    <button class="btn btn-default submit" >Register</button>
+                    <button class="btn btn-default submit" >Registrar</button>
                 </div>
                 
                 <div class="clearfix"></div>
                 
                 <div class="separator">
-                    <p class="change_link">Already a member ?
-                        <a href="{{ url('/login') }}" class="to_register"> Log in </a>
+                    <p class="change_link">¿Ya posee una cuenta?
+                        <a href="{{ url('/login') }}" class="to_register"> Iniciar Sesión </a>
                     </p>
                     
                     <div class="clearfix"></div>
                     <br />
                     
                     <div>
-                        <h1><i class="fa fa-paw"></i> Gentelella Alela!</h1>
-                        <p>©2016 All Rights Reserved. Gentelella Alela! is a Bootstrap 3 template. Privacy and Terms</p>
+                        <h1><i class="fa fa-graduation-cap"></i> Simoncito "Las Américas"</h1>
+                        <p>©2017 Simoncito "Las Américas".</p>
                     </div>
                 </div>
             </form>

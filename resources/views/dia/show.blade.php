@@ -1098,6 +1098,8 @@
     	</div>
   	</div>
 </div>
+
+@include('dia._modal')
 @endsection
 
 @section('js')

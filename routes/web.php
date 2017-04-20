@@ -79,6 +79,13 @@ Route::group(['middleware' => 'auth'], function(){
         # Empleados        
         Route::resource('empleados', 'EmpleadoController');
 
+        ########################################################################
+        #                             Seguridad                                #
+        ########################################################################
+
+        # Empleados        
+        Route::resource('usuarios', 'UsuarioController');
+
 
         //////////////////// Dias Laborables////////////////
         //Route::get('diaLaborables','DiaLaborableController@index');
