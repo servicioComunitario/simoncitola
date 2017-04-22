@@ -12,6 +12,7 @@ class Representante extends Model
 		'apellido',
 		'apellido2',
 		'cedula',
+		'sexo',
 		'fecha_nacimiento',
 		'ocupacion',
 		'direccion:_trabajo',
@@ -23,6 +24,7 @@ class Representante extends Model
 		return $this->hasMany(Inscripcion::class, 'responsable_id', 'id' );
 	}
 
+/*
 	public function hijosP(){
 		return $this->hasMany(Alumno::class, 'padre_id', 'id' );
 	}
@@ -30,6 +32,14 @@ class Representante extends Model
 	public function hijosM(){
 		return $this->hasMany(Alumno::class, 'madre_id', 'id' );
 	}
-
+*/
+	public function hijos()
+	{
+		if ($this->sexo == 'masculino') {
+			return $this->hasMany(Alumno::class, 'padre_id', 'id' );
+		} else{
+			return $this->hasMany(Alumno::class, 'madre_id', 'id' );			
+		}
+	}
 	
 }

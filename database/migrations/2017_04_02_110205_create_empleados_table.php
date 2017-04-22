@@ -22,6 +22,7 @@ class CreateEmpleadosTable extends Migration
             $table->text('apellido');
             $table->text('apellido2')->nullable();
             $table->string('cedula', 15)->unique();
+            $table->enum('sexo', ['masculino', 'femenino']);
             $table->date('fecha_nacimiento');
             $table->text('direccion');
             $table->text('telefono');

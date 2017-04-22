@@ -29,32 +29,16 @@
                 <td>{{ $representante->nombre." ".$representante->nombre2 }}</td>
                 <td>{{ $representante->apellido." ".$representante->apellido2 }}</td>
                 <td>{{ $representante->cedula }}</td>
-                
-                  @if(count($representante->inscripciones) > 0)
-                    <td>
-                    {{ $representante->inscripciones->last()->alumno->nombre." ".$representante->inscripciones->last()->alumno->apellido }}
-                    </td>
-                    <td>
-                      {{ $representante->inscripciones->last()->parentesco->nombre }}
-                    </td>
-                  @else
-                    @if(count($representante->hijosP) > 0)
-                    <td>
-                      {{ $representante->hijosP->last()->nombre." ".$representante->hijosP->last()->apellido }}
-                    </td>
-                    <td>
-                      Padre
-                    </td>
-                    @elseif(count($representante->hijosM) > 0)
-                    <td>
-                      {{ $representante->hijosM->last()->nombre." ".$representante->hijosM->last()->apellido }}
-                    </td>
-                    <td>
-                      Madre
-                    </td>
-                    @endif
+                <td>{{ $representante->hijos->last()->nombre." ".$representante->hijos->last()->apellido }}</td>
+                @if( count($representante->hijos) > 0 )
+                  @if( $representante->sexo === 'masculino' )
+                    <td>Padre</td>
+                  @elseif( $representante->sexo === 'femenino' )
+                    <td>Madre</td>
                   @endif
-                </td>
+                @elseif( count($representante->inscripciones) > 0  )
+                  <td>{{ $representante->inscripciones->last()->periodo->nombre }}</td>
+                @endif
                 <td class="text-center">
 
                   <a href={{ route('representantes.show', $representante->id) }} class="btn btn-success btn-xs" title="Editar">

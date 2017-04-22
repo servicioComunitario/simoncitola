@@ -136,7 +136,7 @@
                   <label for="responsable" class="control-label col-md-7 col-sm-7 col-xs-12">Sección: </label>
                   <div class="col-md-5 col-sm-5 col-xs-12">
                     <select name="seccion" class="form-control">
-                      <option value="0"> - Secciones - </option>
+                      <option value=""> - Secciones - </option>
                       @foreach ($secciones as $seccion)
                         <option value="{{ $seccion->id }}">{{ $seccion->nombre }}</option>
                       @endforeach

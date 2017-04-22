@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\UpdateRepresentanteRequest;
+
 
 use App\Models\User;
 use App\Models\Representante;
 
+use DB;
 
 
 class RepresentanteController extends Controller
@@ -50,12 +53,25 @@ class RepresentanteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Representante $representante)
+    // public function show(Representante $representante)
+    public function show($id)
     {
-      return view('representante.show')->with([
-        'representante' => $representante,
-        'disabled' => 'disabled'
 
+        $representante = Representante::find($id);
+
+        $alumnos = $representante->hijos;
+
+        foreach ($representante->inscripciones as $inscripcion) {
+            $alumnos->push($inscripcion->alumno);
+        }
+
+        // $alumnos = $alumnos->unique('id');
+        $alumnos = $alumnos->unique();
+
+        return view('representante.show')->with([
+            'representante' => $representante,
+            'alumnos'       => $alumnos,
+            'disabled'      => 'disabled'
         ]);
     }
 
@@ -65,9 +81,15 @@ class RepresentanteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    // public function edit(Representante $representante)
     public function edit($id)
     {
-        //
+        $representante = Representante::find($id);
+        
+        return view('representante.edit')->with([
+            'representante' => $representante,
+            'disabled'      => ''
+        ]);
     }
 
     /**
@@ -77,9 +99,9 @@ class RepresentanteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateRepresentanteRequest $request, $id)
     {
-        //
+        
     }
 
     /**
