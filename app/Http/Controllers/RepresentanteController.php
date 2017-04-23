@@ -53,11 +53,8 @@ class RepresentanteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    // public function show(Representante $representante)
-    public function show($id)
+    public function show(Representante $representante)
     {
-
-        $representante = Representante::find($id);
 
         $alumnos = $representante->hijos;
 
@@ -68,9 +65,25 @@ class RepresentanteController extends Controller
         // $alumnos = $alumnos->unique('id');
         $alumnos = $alumnos->unique();
 
+        $tipo = "";
+/*
+        if ($representante->isPadre()) {
+            $tipo = "Padre";
+        } else {
+            $tipo = "Madre";
+        }
+*/
+
+        // echo $this->getControllerName();
+        // echo $this->getMethodName();
+        // echo Route::getCurrentRoute()->action['as'];
+        // dd(Route::getCurrentRoute());
+        // exit;
+
         return view('representante.show')->with([
             'representante' => $representante,
             'alumnos'       => $alumnos,
+            'tipo'          => $tipo,
             'disabled'      => 'disabled'
         ]);
     }
@@ -81,11 +94,12 @@ class RepresentanteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    // public function edit(Representante $representante)
-    public function edit($id)
+    public function edit(Representante $representante)
     {
-        $representante = Representante::find($id);
-        
+
+        // $tipo = "";
+        // dd($representante);
+
         return view('representante.edit')->with([
             'representante' => $representante,
             'disabled'      => ''
@@ -99,9 +113,31 @@ class RepresentanteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateRepresentanteRequest $request, $id)
+    public function update(UpdateRepresentanteRequest $request, Representante $representante)
     {
-        
+        try{
+
+            $representante->update(
+                $request->only(
+                    'cedula',
+                    'nombre',
+                    'nombre2',
+                    'apellido',
+                    'apellido2',
+                    'fecha_nacimiento',
+                    'ocupacion',
+                    'direccion_trabajo',
+                    'telefono',
+                    'telefono2'
+                )
+            );
+
+          session()->flash('msg_info', "El representante ha sido actualizado.");
+        } catch (Exception $e) {
+          session()->flash('msg_danger', $e->getMessage());
+        }
+
+        return redirect()->route('representantes.show', $representante->id);
     }
 
     /**
@@ -113,5 +149,20 @@ class RepresentanteController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function find($cedula)
+    {
+
+        $representante = Representante::where('cedula', $cedula)->get();
+
+        // dd($representante);
+
+        if (sizeof($representante)) {
+            return response()->json(['representante' => $representante, 'code' => 1]);
+        }else{
+            return response()->json(['code' => 0]);
+        }
+
     }
 }

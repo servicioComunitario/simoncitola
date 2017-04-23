@@ -66,7 +66,7 @@
         </div>
 
         <div class="form-group">
-          <label class="control-label col-md-3 col-sm-3 col-xs-12" for="fecha_nacimiento"><span class="required">*</span>* Fecha nacimiento:</label>
+          <label class="control-label col-md-3 col-sm-3 col-xs-12" for="fecha_nacimiento"><span class="required">*</span> Fecha nacimiento:</label>
           <div class="col-md-6 col-sm-6 col-xs-12">
             <input type="text" name="fecha_nacimiento" class="form-control has-feedback-left" id="fecha_nacimiento" placeholder="Inicio del periodo escolar" aria-describedby="inputSuccess2Status"  value="{{ $empleado->fecha_nacimiento or old('fecha_nacimiento') }}" {{ $disabled }}>
             <span class="fa fa-calendar form-control-feedback left" aria-hidden="true"></span>

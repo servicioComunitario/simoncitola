@@ -49,9 +49,9 @@ class CreateInscripcionRequest extends FormRequest
           'apellidoPadre'         => 'required',
           // 'apellido2Padre'     => 'required',
           'cedulaPadre'           => 'required',
-          'fechaNacimientoPadre'  => 'required',
+          'fecha_nacimientoPadre'  => 'required',
           'ocupacionPadre'        => 'required',
-          'direccionTrabajoPadre' => 'required',
+          'direccion_trabajoPadre' => 'required',
           'telefonoPadre'         => 'required',
           // 'telefono2Padre'     => 'required',
           
@@ -60,9 +60,9 @@ class CreateInscripcionRequest extends FormRequest
           'apellidoMadre'         => 'required',
           // 'apellido2Madre'     => 'required',
           'cedulaMadre'           => 'required',
-          'fechaNacimientoMadre'  => 'required',
+          'fecha_nacimientoMadre'  => 'required',
           'ocupacionMadre'        => 'required',
-          'direccionTrabajoMadre' => 'required',
+          'direccion_trabajoMadre' => 'required',
           'telefonoMadre'         => 'required',
           // 'telefono2Madre'     => 'required'
         ];

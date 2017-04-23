@@ -51,11 +51,11 @@ class Empleado extends Model{
     $datos['apellido']                 = $request->get('apellido');
     $datos['apellido2']                = $request->get('apellido2');
     $datos['cedula']                   = $request->get('cedula');
-    $datos['fecha_nacimiento']         = Empleado::formatearFecha($request->get('fecha_nacimiento'));
+    $datos['fecha_nacimiento']         = $request->get('fecha_nacimiento');
     $datos['direccion']                = $request->get('direccion');
     $datos['telefono']                 = $request->get('telefono');
     $datos['telefono2']                = $request->get('telefono2');
-    $datos['fecha_inicio_institucion'] = Empleado::formatearFecha($request->get('fecha_inicio_institucion'));
+    $datos['fecha_inicio_institucion'] = $request->get('fecha_inicio_institucion');
     $datos['anios_servicio_nacional']  = $request->get('anios_servicio_nacional');
     $datos['anios_servicio_estatal']   = $request->get('anios_servicio_estatal');
     $datos['anios_servicio_municipal'] = $request->get('anios_servicio_municipal');
@@ -77,7 +77,7 @@ class Empleado extends Model{
 
     return $datos;
   }
-
+/*
   public static function formatearFecha($fecha)
   {
     $fecha = explode("-", $fecha);
@@ -85,24 +85,31 @@ class Empleado extends Model{
 
     return $fecha;
   }
+*/
+  
+  # mutadores
 
-
+  # fecha_nacimiento
   public function getFechaNacimientoAttribute($fecha_nacimiento)
   {
-      return Carbon::parse($fecha_nacimiento)->format('d-m-Y');
+    return Carbon::parse($fecha_nacimiento)->format('d-m-Y');
   }
 
-  public function setFinAttribute($fecha_nacimiento)
+  public function setFechaNacimientoAttribute($fecha_nacimiento)
   {
-    $this->attributes['fecha_nacimiento'] = Carbon::parse($fecha_nacimiento)->toDateString();
+    $this->attributes['fecha_nacimiento'] = Carbon::parse($fecha_nacimiento)->format('Y-m-d');
   }
 
+  # fecha_inicio_institucion
+  public function getFechaInicioInstitucionAttribute($fecha_inicio_institucion)
+  {
+    return Carbon::parse($fecha_inicio_institucion)->format('d-m-Y');
+  }
 
-
-
-
-
-
+  public function setFechaInicioInstitucionAttribute($fecha_inicio_institucion)
+  {
+    $this->attributes['fecha_inicio_institucion'] = Carbon::parse($fecha_inicio_institucion)->format('Y-m-d');
+  }
 
   # RELACIONES
 	public function actasInasistencias(){

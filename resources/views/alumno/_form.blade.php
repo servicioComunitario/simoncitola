@@ -76,12 +76,15 @@
           <label for="fechaNacimientoAlumno" class="control-label col-md-3 col-sm-3 col-xs-12"> <span class="required">*</span>
             Fecha nacimiento:
           </label>
-          <div class="col-md-9 col-ksm-9 col-xs-12">
-            <input type="text" class="form-control" name="fechaNacimientoAlumno" placeholder="dd/mm/yyyy" value="{{ $alumno->fecha_nacimiento or old('fechaNacimientoAlumno') }}" {{ $disabled }}>
+
+          <div class="col-md-9 col-sm-9 col-xs-12 col-lg-6">
+            <input type="text" name="fechaNacimientoAlumno" class="form-control has-feedback-left" id="fecha_nacimiento" placeholder="Fecha de nacimiento" aria-describedby="inputSuccess2Status"  value="{{ $alumno->fecha_nacimiento or old('fechaNacimientoAlumno') }}" {{ $disabled }}>
+            <span class="fa fa-calendar form-control-feedback left" aria-hidden="true"></span>
             @if ($errors->has('fechaNacimientoAlumno'))
-              <span style="color: red;">{{ $errors->first('fechaNacimientoAlumno') }}</span>
+                <span class="text-danger">{{ $errors->first('fechaNacimientoAlumno') }}</span>
             @endif
           </div>
+
         </div>
 
         <div class="form-group">
@@ -89,7 +92,7 @@
             Dirección:
           </label>
           <div class="col-md-9 col-ksm-9 col-xs-12">
-            <input type="text" class="form-control" name="direccionAlumno" placeholder="dd/mm/yyyy" value="{{ $alumno->direccion or old('direccionAlumno') }}" {{ $disabled }}>
+            <input type="text" class="form-control" name="direccionAlumno" placeholder="Dirección" value="{{ $alumno->direccion or old('direccionAlumno') }}" {{ $disabled }}>
             @if ($errors->has('direccionAlumno'))
               <span style="color: red;">{{ $errors->first('direccionAlumno') }}</span>
             @endif

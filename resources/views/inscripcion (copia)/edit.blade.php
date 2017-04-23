@@ -1,8 +1,6 @@
 @extends('layouts.base')
 
 @section('contenido')
-
-		{{-- {{ dd($secciones) }} --}}
 		<div class="row">
 			<div class="col-md-12 col-sm-12 col-xs-12 text-center">
 				<h1 class="">Editar Inscripción</h1>
@@ -19,8 +17,3 @@
 			{{ csrf_field() }}
     </form>
 @endsection
-
-@section('js')
-	<script type="text/javascript"> var secciones = {!! $secciones !!}; </script>
-	<script src={{ URL::asset('js/inscripcion/secciones.js') }}></script>
-@stop

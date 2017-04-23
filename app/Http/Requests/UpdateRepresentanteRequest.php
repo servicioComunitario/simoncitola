@@ -24,13 +24,13 @@ class UpdateRepresentanteRequest extends FormRequest
     public function rules()
     {
         return [
-            'nombrePadre'           => 'required',
-            'apellidoPadre'         => 'required',
-            'cedulaPadre'           => 'required',
-            'fechaNacimientoPadre'  => 'required',
-            'ocupacionPadre'        => 'required',
-            'direccionTrabajoPadre' => 'required',
-            'telefonoPadre'         => 'required',
+            'nombre'            => 'required',
+            'apellido'          => 'required',
+            'cedula'            => 'required',
+            'fecha_nacimiento'  => 'required',
+            'ocupacion'         => 'required',
+            'direccion_trabajo' => 'required',
+            'telefono'          => 'required',
         ];
     }
 }

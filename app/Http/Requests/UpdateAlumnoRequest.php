@@ -13,7 +13,7 @@ class UpdateAlumnoRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,12 @@ class UpdateAlumnoRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'nombreAlumno'          => 'required',
+            'apellidoAlumno'        => 'required',
+            'cedulaAlumno'          => 'required',
+            'lugarNacimientoAlumno' => 'required',
+            'fechaNacimientoAlumno' => 'required',
+            'direccionAlumno'       => 'required',
         ];
     }
 }
