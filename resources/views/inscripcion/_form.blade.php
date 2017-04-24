@@ -32,6 +32,13 @@
         <div class="form-group">
           <label for="responsable" class="control-label col-lg-5 col-md-7 col-sm-7 col-xs-12">Responsable: </label>
           <div class="">
+          
+
+          Madre <input type="radio" name="responsable" value="0" {{ (old('responsable') !='' )? ((old('responsable') =='0' )? 'checked':'' ) : ( ($inscripcion->exists)? ( ($inscripcion->responsable_id == $inscripcion->alumno->madre_id)?'checked':'' ) : 'checked' ) }} > &nbsp;
+          Padre <input type="radio" name="responsable" value="1" {{ (old('responsable') !='' )? ((old('responsable') =='1' )? 'checked':'' ) : ( ($inscripcion->exists)? ( ($inscripcion->responsable_id == $inscripcion->alumno->padre_id)?'checked':'' ) : '' ) }}> &nbsp;
+          Otro <input type="radio" name="responsable" value="2" {{ (old('responsable') !='' )? ((old('responsable') =='2' )? 'checked':'' ) : ( ($inscripcion->exists)? ( ($inscripcion->responsable_id != $inscripcion->alumno->madre_id and $inscripcion->responsable_id != $inscripcion->alumno->padre_id)?'checked':'' ) : '' ) }}>
+
+{{-- 
             @if($inscripcion->exists)
               Madre <input type="radio" name="responsable" value="0" {{ ($inscripcion->responsable_id == $inscripcion->alumno->madre_id)?'checked':'' }}> &nbsp;
               Padre <input type="radio" name="responsable" value="1" {{ ($inscripcion->responsable_id == $inscripcion->alumno->padre_id)?'checked':'' }}> &nbsp;
@@ -41,7 +48,7 @@
               Padre <input type="radio" name="responsable" value="1" > &nbsp;
               Otro <input type="radio" name="responsable" value="2" >
             @endif
-
+ --}}
 
           </div>
         </div>
@@ -49,66 +56,74 @@
         <div class="form-group">
           <label for="partidaNacimiento" class="control-label col-lg-5 col-md-7 col-sm-7 col-xs-12">Partida de nacimiento: </label>
           <div class="">
-            Si <input type="radio" name="partidaNacimiento" value="1" {{ ($inscripcion->partida_nacimiento)?'checked':'' }}> &nbsp;
-            no <input type="radio" name="partidaNacimiento" value="0" {{ (!$inscripcion->partida_nacimiento)?'checked':'' }}>
+            Si <input type="radio" name="partidaNacimiento" value="1" {{ ( old('partidaNacimiento') == '1' )? 'checked': ( ( ($inscripcion->exists)? ( ($inscripcion->partida_nacimiento)?'checked':'') : '') ) }}> &nbsp;
+            no <input type="radio" name="partidaNacimiento" value="0" {{ ( old('partidaNacimiento') == '0' )? 'checked': (( (old('partidaNacimiento') == '1'))? '': ( ( ($inscripcion->exists)? ( (!$inscripcion->partida_nacimiento)?'checked':'') : 'checked') ) ) }}>
           </div>
         </div>
 
         <div class="form-group">
           <label for="certificadoVacunas" class="control-label col-lg-5 col-md-7 col-sm-7 col-xs-12">Certificado de vacunas: </label>
           <div class="">
-            Si <input type="radio" name="certificadoVacunas" value="1" {{ ($inscripcion->certificado_vacuna)?'checked':'' }}> &nbsp;
-            no <input type="radio" name="certificadoVacunas" value="0" {{ (!$inscripcion->certificado_vacuna)?'checked':'' }}>
+            Si <input type="radio" name="certificadoVacunas" value="1" {{ ( old('certificadoVacunas') == '1' )? 'checked': ( ( ($inscripcion->exists)? ( ($inscripcion->certificado_vacuna)?'checked':'') : '') ) }}> &nbsp;
+
+            no <input type="radio" name="certificadoVacunas" value="0" {{ ( old('certificadoVacunas') == '0' )? 'checked': (( (old('certificadoVacunas') == '1'))? '': ( ( ($inscripcion->exists)? ( (!$inscripcion->certificado_vacuna)?'checked':'') : 'checked') ) ) }}>
           </div>
         </div>
 
         <div class="form-group">
-          <label for="fotos" class="control-label col-lg-5 col-md-7 col-sm-7 col-xs-12">Fotos: </label>
+          <label for="foto" class="control-label col-lg-5 col-md-7 col-sm-7 col-xs-12">Fotos: </label>
           <div class="">
-            Si <input type="radio" name="fotos" value="1" {{ ($inscripcion->foto)?'checked':'' }}> &nbsp;
-            no <input type="radio" name="fotos" value="0" {{ (!$inscripcion->foto)?'checked':'' }}>
+            Si <input type="radio" name="foto" value="1" {{ ( old('foto') == '1' )? 'checked': ( ( ($inscripcion->exists)? ( ($inscripcion->foto)?'checked':'') : '') ) }} > &nbsp;
+
+            no <input type="radio" name="foto" value="0"{{ ( old('foto') == '0' )? 'checked': (( (old('foto') == '1'))? '': ( ( ($inscripcion->exists)? ( (!$inscripcion->foto)?'checked':'') : 'checked') ) ) }} >
           </div>
         </div>
 
         <div class="form-group">
           <label for="copiaCedulaMadre" class="control-label col-lg-5 col-md-7 col-sm-7 col-xs-12">Copia cedula de la madre: </label>
           <div class="">
-            Si <input type="radio" name="copiaCedulaMadre" value="1" {{ ($inscripcion->copia_cedula_madre)?'checked':'' }}> &nbsp;
-            no <input type="radio" name="copiaCedulaMadre" value="0" {{ (!$inscripcion->copia_cedula_madre)?'checked':'' }}>
+            Si <input type="radio" name="copiaCedulaMadre" value="1" {{ ( old('copiaCedulaMadre') == '1' )? 'checked': ( ( ($inscripcion->exists)? ( ($inscripcion->copia_cedula_madre)?'checked':'') : '') ) }} > &nbsp;
+
+            no <input type="radio" name="copiaCedulaMadre" value="0" {{ ( old('copiaCedulaMadre') == '0' )? 'checked': (( (old('copiaCedulaMadre') == '1'))? '': ( ( ($inscripcion->exists)? ( (!$inscripcion->copia_cedula_madre)?'checked':'') : 'checked') ) ) }}>
           </div>
         </div>
 
         <div class="form-group">
           <label for="constanciaTrabajo" class="control-label col-lg-5 col-md-7 col-sm-7 col-xs-12">Constancia de trabajo: </label>
           <div class="">
-            Si <input type="radio" name="constanciaTrabajo" value="1" {{ ($inscripcion->constancia_trabajo)?'checked':'' }}> &nbsp;
-            no <input type="radio" name="constanciaTrabajo" value="0" {{ (!$inscripcion->constancia_trabajo)?'checked':'' }}>
+            Si <input type="radio" name="constanciaTrabajo" value="1" {{ ( old('constanciaTrabajo') == '1' )? 'checked': ( ( ($inscripcion->exists)? ( ($inscripcion->constancia_trabajo)?'checked':'') : '') ) }} > &nbsp;
+
+            no <input type="radio" name="constanciaTrabajo" value="0" {{ ( old('constanciaTrabajo') == '0' )? 'checked': (( (old('constanciaTrabajo') == '1'))? '': ( ( ($inscripcion->exists)? ( (!$inscripcion->constancia_trabajo)?'checked':'') : 'checked') ) ) }}>
           </div>
         </div>
 
         <div class="form-group">
           <label for="cartaResidencia" class="control-label col-lg-5 col-md-7 col-sm-7 col-xs-12">Carta de residencia: </label>
           <div class="">
-            Si <input type="radio" name="cartaResidencia" value="1" {{ ($inscripcion->carta_residencia)?'checked':'' }}> &nbsp;
-            no <input type="radio" name="cartaResidencia" value="0" {{ (!$inscripcion->carta_residencia)?'checked':'' }}>
+            Si <input type="radio" name="cartaResidencia" value="1" {{ ( old('cartaResidencia') == '1' )? 'checked': ( ( ($inscripcion->exists)? ( ($inscripcion->carta_residencia)?'checked':'') : '') ) }} > &nbsp;
+
+            no <input type="radio" name="cartaResidencia" value="0" {{ ( old('cartaResidencia') == '0' )? 'checked': (( (old('cartaResidencia') == '1'))? '': ( ( ($inscripcion->exists)? ( (!$inscripcion->carta_residencia)?'checked':'') : 'checked') ) ) }}>
           </div>
         </div>
 
         <div class="form-group">
           <label for="otrosNininos" class="control-label col-lg-5 col-md-7 col-sm-7col-xs-12">¿Otros niños en la institución?: </label>
           <div class="">
-            Si <input type="radio" name="otrosNininos" value="1" {{ ($inscripcion->otros_ninios_inscritos)?'checked':'' }}> &nbsp;
-            no <input type="radio" name="otrosNininos" value="0" {{ (!$inscripcion->otros_ninios_inscritos)?'checked':'' }}>
+            Si <input type="radio" name="otrosNininos" value="1" {{ ( old('otrosNininos') == '1' )? 'checked': ( ( ($inscripcion->exists)? ( ($inscripcion->otros_ninios_inscritos)?'checked':'') : '') ) }} > &nbsp;
+
+            no <input type="radio" name="otrosNininos" value="0" {{ ( old('otrosNininos') == '0' )? 'checked': (( (old('otrosNininos') == '1'))? '': ( ( ($inscripcion->exists)? ( (!$inscripcion->otros_ninios_inscritos)?'checked':'') : 'checked') ) ) }}>
           </div>
         </div>
 
         <div class="form-group">
           <label for="colabora" class="control-label col-lg-5 col-md-7 col-sm-7 col-xs-12">¿Esta dispuesto a colaborar con la institución?: </label>
           <div class="">
-            Si <input type="radio" name="colabora" value="1" {{ ($inscripcion->colabora)?'checked':'' }}> &nbsp;
-            no <input type="radio" name="colabora" value="0" {{ (!$inscripcion->colabora)?'checked':'' }}>
+            Si <input type="radio" name="colabora" value="1" {{ ( old('colabora') == '1' )? 'checked': ( ( ($inscripcion->exists)? ( ($inscripcion->colabora)?'checked':'') : '') ) }} > &nbsp;
+
+            no <input type="radio" name="colabora" value="0" {{ ( old('colabora') == '0' )? 'checked': (( (old('colabora') == '1'))? '': ( ( ($inscripcion->exists)? ( (!$inscripcion->colabora)?'checked':'') : 'checked') ) ) }}>
           </div>
         </div>
+
         @if($inscripcion->exists)
         <div class="ln_solid"></div>
         <div class="form-group">

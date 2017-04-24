@@ -53,7 +53,7 @@
           <label for="cedulaAlumno" class="control-label col-md-3 col-sm-3 col-xs-12"> <span class="required">*</span> Cedula:
           </label>
           <div class="col-md-9 col-ksm-9 col-xs-12">
-            <input type="text" class="form-control" name="cedulaAlumno" placeholder="Cedula" value="{{ $alumno->cedula or old('cedulaAlumno') }}" {{ $disabled }}>
+            <input type="text" class="form-control" name="cedulaAlumno" placeholder="Cedula (sera generada por el sistema)" value="{{ $alumno->cedula or old('cedulaAlumno') }}" disabled="">
             @if ($errors->has('cedulaAlumno'))
               <span style="color: red;">{{ $errors->first('cedulaAlumno') }}</span>
             @endif

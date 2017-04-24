@@ -25,9 +25,13 @@
       {{--  DATOS DEL PADRE, MADRE Y RESPONSABLE --}}
       <div class="col-md-6 col-xs-12">
         <div class="row">
-          @include('representante._form',['tipo' => 'Padre'])
+          @include('representante._form',['representante' => $madre, 'tipo' => 'Madre'])
 
-          @include('representante._form',['tipo' => 'Madre'])
+          @include('representante._form',['representante' => $padre, 'tipo' => 'Padre'])
+
+          <div id="div-representante" {{ (old('responsable') == '2')? "style=display:block" : "style = display:none "}} >
+            @include('representante._form',['representante' => $responsable, 'tipo' => 'Responsable'])
+          </div>
           
         </div>
       </div>
