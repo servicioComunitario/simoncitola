@@ -84,4 +84,11 @@ Route::group(['middleware' => 'auth'], function(){
         //Route::get('diaLaborables','DiaLaborableController@index');
     });
 
+    ############################################################################
+    #                             Asistencias                                  #
+    ############################################################################
+        Route::name('asistenciaEmpleado.create')->get('asistenciaEmpleado/crear/{id}', 'AsistenciaEmpleadoController@create');
+        Route::resource('asistenciaEmpleado', 'AsistenciaEmpleadoController');
+        Route::post('inasistenciaEmpleado','AsistenciaEmpleadoController@storeInasistencia');
+
 });

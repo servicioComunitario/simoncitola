@@ -15,9 +15,9 @@ class DiaSeeder extends Seeder
     {
         $datos = [
             [
-                'id'          => '2017-04-10',
-                'dia'         => 10,
-                'mes'         => 4,
+                'id'          => '2017-04-01',
+                'dia'         => 01,
+                'mes'         => 5,
                 'anio'        => 2017,
                 'semana_mes'  => 3,
                 'semana_anio' => 16,
@@ -26,9 +26,9 @@ class DiaSeeder extends Seeder
                 'tipo'        => 'escolar'
             ],
             [
-                'id'          => '2017-04-11',
-                'dia'         => 11,
-                'mes'         => 4,
+                'id'          => '2017-04-02',
+                'dia'         => 02,
+                'mes'         => 5,
                 'anio'        => 2017,
                 'semana_mes'  => 3,
                 'semana_anio' => 16,
@@ -37,9 +37,9 @@ class DiaSeeder extends Seeder
                 'tipo'        => 'libre'
             ],
             [
-                'id'          => '2017-04-12',
-                'dia'         => 12,
-                'mes'         => 4,
+                'id'          => '2017-04-03',
+                'dia'         => 03,
+                'mes'         => 5,
                 'anio'        => 2017,
                 'semana_mes'  => 3,
                 'semana_anio' => 16,
@@ -48,9 +48,9 @@ class DiaSeeder extends Seeder
                 'tipo'        => 'escolar'
             ],
             [
-                'id'          => '2017-04-13',
-                'dia'         => 13,
-                'mes'         => 4,
+                'id'          => '2017-04-04',
+                'dia'         => 04,
+                'mes'         => 5,
                 'anio'        => 2017,
                 'semana_mes'  => 3,
                 'semana_anio' => 16,
@@ -59,9 +59,9 @@ class DiaSeeder extends Seeder
                 'tipo'        => 'administrativo'
             ],
             [
-                'id'          => '2017-04-14',
-                'dia'         => 14,
-                'mes'         => 4,
+                'id'          => '2017-04-05',
+                'dia'         => 05,
+                'mes'         => 5,
                 'anio'        => 2017,
                 'semana_mes'  => 3,
                 'semana_anio' => 16,
@@ -70,9 +70,9 @@ class DiaSeeder extends Seeder
                 'tipo'        => 'administrativo'
             ],
             [
-                'id'          => '2017-04-15',
-                'dia'         => 15,
-                'mes'         => 4,
+                'id'          => '2017-04-06',
+                'dia'         => 06,
+                'mes'         => 5,
                 'anio'        => 2017,
                 'semana_mes'  => 3,
                 'semana_anio' => 16,
@@ -81,9 +81,9 @@ class DiaSeeder extends Seeder
                 'tipo'        => 'libre'
             ],
             [
-                'id'          => '2017-04-16',
-                'dia'         => 16,
-                'mes'         => 4,
+                'id'          => '2017-04-07',
+                'dia'         => 07,
+                'mes'         => 5,
                 'anio'        => 2017,
                 'semana_mes'  => 3,
                 'semana_anio' => 16,

@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Database\Seeder;
-
 use App\Models\Periodo;
 
 class PeriodoSeeder extends Seeder
@@ -13,7 +12,7 @@ class PeriodoSeeder extends Seeder
      */
     public function run()
     {
-      $periodos = [
+        $periodos = [
       	[
       		'inicio' 	=> '2017-01-15',
       		'fin' 		=> '2017-10-11',

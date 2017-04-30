@@ -17,8 +17,8 @@ class CreateAsistenciaEmpleadosTable extends Migration
             $table->increments('id');
             $table->date('dia_id');
             $table->integer('empleado_id')->unsigned();
-            $table->time('hora_entrada');
-            $table->time('hora_salida');
+            $table->time('hora_entrada')->nullable();
+            $table->time('hora_salida')->nullable();
             $table->boolean('presente');
             $table->boolean('ausencia_justificada');
             $table->text('justificacion')->nullable();

@@ -19,7 +19,7 @@
 	<!-- jQuery custom content scroller -->
     <link href={{ URL::asset('css/jquery.mCustomScrollbar.min.css') }} rel="stylesheet"/>
     <!-- iCheck -->
-    <link href={{ URL::asset('table/iCheck/skins/flat/green.css') }} rel="stylesheet"/>
+    <link href={{ URL::asset('iCheck/skins/all.css?v=1.0.2') }} rel="stylesheet"/>
   
 
     <!-- Datatables -->
@@ -279,7 +279,7 @@
     <script src={{ URL::asset('js/jquery.mCustomScrollbar.concat.min.js') }}></script>
 
     <!-- idCheck -->
-    <script src={{ URL::asset('table/iCheck/icheck.min.js') }}></script>
+    <script src={{ URL::asset('iCheck/icheck.min.js?v=1.0.2') }}></script>
 
     <!-- Datatables -->
     <script src={{ URL::asset('table/datatables.net/js/jquery.dataTables.min.js') }}></script>
@@ -298,6 +298,9 @@
 
     <!-- Custom Theme Scripts -->
     <script src={{ URL::asset('js/custom.min.js') }}></script>
+
+    {{-- checkbox --}}
+    <script src={{ URL::asset('js/checkbox.js') }}></script>
 
     {{-- Scripts personalizados --}}
     @yield("js")
