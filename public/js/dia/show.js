@@ -104,7 +104,6 @@ $(document).ready(function() {
 		url: urlUpdate,
 		type: 'PUT',
 		dataType: 'json',
-		async: false,
 	    headers: {
 	        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
 	    }
@@ -125,8 +124,37 @@ $(document).ready(function() {
 		.done(function() {
 			cambiarTipo(celdaDia, siguienteTipo);
 		})
-		.fail(function(error) {
-			console.log(error.status);
+		.fail(function(xhr, status, error) {
+			switch(xhr.status){
+				case 403:{
+					$("#numError").text("403");
+					$("#tituloError").text("¡Acceso Denegado!");
+					$("#descripcionError").text("Usted no tiene permisos para modificar el Calendario Escolar.");
+					$("#iconoError").addClass('fa-lock');
+				}break;
+
+				case 404:{
+					$("#numError").text("404");
+					$("#tituloError").text("Recurso no localizado");
+					$("#descripcionError").text("El recurso al que intenta acceder no ha podido ser encontrado.");
+					$("#iconoError").addClass('fa-question');
+				}break;
+
+				case 500:{
+					$("#numError").text("500");
+					$("#tituloError").text("Error interno");
+					$("#descripcionError").text("Ha ocurrido un error en el servidor mientras se procesaba su petición.");
+					$("#iconoError").addClass('fa-bug');
+				}break;
+
+				default:{
+					$("#numError").text(xhr.status);
+					$("#tituloError").text(error);
+					$("#descripcionError").text(error);
+					$("#iconoError").addClass('fa-frown-o');
+				}break;
+			}
+			$('.modal-error403').modal('toggle');			
 		});
 	});
 });

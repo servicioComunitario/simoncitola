@@ -12,7 +12,7 @@ class PeriodoController extends Controller
 {
     public function index()
     {
-        $periodos = Periodo::all()->sortByDesc("nombre");;
+        $periodos = Periodo::all()->sortByDesc("nombre");
 
         return view("periodo.index")->with("periodos", $periodos);
     }

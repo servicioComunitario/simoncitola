@@ -48,13 +48,16 @@ class InscripcionController extends Controller
       $empleado = new Empleado;
       $secciones = Seccion::all();
 
+      $disabled = '';
+
       return view('inscripcion.create')->with( [
         'inscripcion' => $inscripcion,
         'alumno'      => $alumno,
         'padre'       => $padre,
         'madre'       => $madre,
         'responsable' => $responsable,
-        'secciones'   => $secciones
+        'secciones'   => $secciones,
+        'disabled'    => $disabled
       ]);
     }
 

@@ -1,16 +1,17 @@
 @extends('layouts.base')
 
 @section('contenido')
+
   <div class="form-horizontal form-label-left">
 		@include('representante._form', ['representante' => $representante, 'disabled' => $disabled])
 
 
 
-		<div class="row"> {{-- INFORMACION DEL PADRES Y REPRESENTANTES --}}
+		<div class="row"> {{-- INFORMACION DE HIJOS Y REPRESENTADOS --}}
 		  <div class="col-md-12 col-xs-12">
 		    <div class="x_panel">
 		      <div class="x_title">
-		        <h2> Hijo(s) </h2>
+		        <h2> Hijo(s) y Representados </h2>
 		        <ul class="nav navbar-right panel_toolbox">
 		          <li><a class=""><i class=""></i> </a>
 		          <li><a class=""><i class=""></i> </a>
@@ -23,30 +24,24 @@
 	          <table id="datatable" class="table table-striped table-bordered jambo_table">
               <thead>
                 <tr>
-                  <th>Alumno</th>
-                  <th>Representante</th>
+                  <th>Nombre</th>
+                  <th>Apellido</th>
+                  <th>Cedula</th>
                   <th>Sección</th>
                   <th>Periodo</th>
-                  <th style="width: 40px;" class="text-center">
-                    <a href={{ route('inscripciones.create') }} class="btn btn-success btn-xs" title="Crear">
-                        <i class="fa fa-plus"></i>
-                    </a>
-                  </th>
+                  {{-- <th style="width: 40px;" class="text-center"></th> --}}
                 </tr>
               </thead>
               <tbody>
-              @if(count($representante->alumnos))
-              	@foreach($representante->alumnos as $alumno)
-                <tr>
-                	<td>{{ $alumno->nombre }}</td>
-                	<td></td>
-                	<td></td>
-                	<td></td>
-                	<td></td>
-
-                </tr>
+              	@foreach($alumnos as $alumno)
+                  <tr>
+                    <td>{{ $alumno->nombre." ".$alumno->nombre2 }}</td>
+                    <td>{{ $alumno->apellido." ".$alumno->apellido2 }}</td>
+                  	<td>{{ $alumno->cedula }}</td>
+                    <td>{{ $alumno->inscripciones->last()->seccion->nombre }}</td>
+                  	<td>{{ $alumno->inscripciones->last()->seccion->periodo->nombre }}</td>
+                  </tr>
               	@endforeach
-            	@endif
               </tbody>
 	          </table>
 		      </div>

@@ -32,7 +32,7 @@ class Administradores
      */
     public function handle($request, Closure $next)
     {
-        if ($this->auth->user()->tipodeRol()==1) {
+        if ($this->auth->user()->rol->nivel==0) {
             return $next($request);
         }else{
             abort(403);

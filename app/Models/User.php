@@ -37,13 +37,4 @@ class User extends Authenticatable
   public function rol(){
     return $this->belongsTo(Rol::class);
   }
-
-  public function tipodeRol()
-  {
-    $rol=Rol::where('id','=',$this->rol_id)->firstOrFail();
-    if ($rol->nivel<=0) {
-      return 1;
-    }
-    return $rol;
-  }
 }

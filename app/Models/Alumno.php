@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+use Carbon\Carbon;
+
 class Alumno extends Model
 {
 
@@ -20,6 +22,21 @@ class Alumno extends Model
 		'fecha_nacimiento',
 		'direccion'
 	];
+
+  # mutadores
+
+  # fecha_nacimiento
+  public function getFechaNacimientoAttribute($fecha_nacimiento)
+  {
+    return Carbon::parse($fecha_nacimiento)->format('d-m-Y');
+  }
+
+  public function setFechaNacimientoAttribute($fecha_nacimiento)
+  {
+    $this->attributes['fecha_nacimiento'] = Carbon::parse($fecha_nacimiento)->format('Y-m-d');
+  }
+
+
 
   public function estado(){
     return $this->belongsTo(Estado::class);

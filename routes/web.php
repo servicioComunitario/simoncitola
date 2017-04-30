@@ -38,6 +38,8 @@ Route::group(['middleware' => 'auth'], function(){
     ////////////// Ruta representantes ///////////////////////////////////
     Route::resource('representantes', 'RepresentanteController');
 
+    Route::name('representantes.find')->get('representantes/{cedula}/find', 'RepresentanteController@find');
+
     Route::name('home_path')->get('/home', 'HomeController@index');
 
     ############################################################################
@@ -45,7 +47,7 @@ Route::group(['middleware' => 'auth'], function(){
     ############################################################################
     
     # Dias
-    Route::name('dias.show')->get('dias/{anio}', 'DiaController@show');
+    Route::name('dias.show')->get('dias/{anio}/find', 'DiaController@show');
     
 
     /****************************** Admin *************************************/
@@ -78,6 +80,13 @@ Route::group(['middleware' => 'auth'], function(){
 
         # Empleados        
         Route::resource('empleados', 'EmpleadoController');
+
+        ########################################################################
+        #                             Seguridad                                #
+        ########################################################################
+
+        # Empleados        
+        Route::resource('usuarios', 'UsuarioController');
 
 
         //////////////////// Dias Laborables////////////////
